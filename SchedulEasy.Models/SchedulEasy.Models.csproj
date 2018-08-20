@@ -72,6 +72,9 @@
     <Compile Include="BusyDayListItem.cs" />
     <Compile Include="CalendarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamCreate.cs" />
+    <Compile Include="TeamDetail.cs" />
+    <Compile Include="TeamEdit.cs" />
     <Compile Include="TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>

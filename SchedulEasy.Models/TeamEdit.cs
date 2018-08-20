@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchedulEasy.Data
+namespace SchedulEasy.Models
 {
-    public class Team
+    public class TeamEdit
     {
-        [Key]
         public int TeamID { get; set; }
-        public string OwnerID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-
     }
 }
