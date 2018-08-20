@@ -75,19 +75,6 @@ textarea {
     z-index: 2;
 }
 
-.backDrop {
-    position: absolute;
-    padding: 2px 5px;
-    text-decoration: none;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    text-align: left;
-    background-color: rgb(5,134,5);
-    z-index: 1;
-}
-
 .dt {
     position: absolute;
     color: white;

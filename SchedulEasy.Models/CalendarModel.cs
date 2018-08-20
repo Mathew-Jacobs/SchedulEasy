@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace SchedulEasy.Models
             public int dtDay { get; set; }
             public int? daycolumn { get; set; }
             public int BusyDayID { get; set; }
-            public decimal BusyLevel { get; set; }
+            public string BusyLevel { get; set; }
             public List<string> Desc { get; set; }
         }
     }

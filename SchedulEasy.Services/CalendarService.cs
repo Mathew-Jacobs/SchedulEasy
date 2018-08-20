@@ -2,6 +2,7 @@
 using SchedulEasy.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -230,10 +231,29 @@ namespace SchedulEasy.Services
             }
         }
 
-        public decimal GetBusyLevel(DateTime date)
+        public string GetBusyLevel(DateTime date)
         {
             var dates = GetBusies();
-            decimal busyLevel = 0;
+            int red = 0;
+            int green = 175;
+            int blue = 5;
+            int stepsize = 175;
+            List<Color> colors = new List<Color>();
+            Color color = Color.FromArgb(1, red, green, blue);
+            colors.Add(color);
+            while (red < 175)
+            {
+                red += stepsize;
+                if (red > 175) { red = 175; }
+                colors.Add(Color.FromArgb(1, red, green, blue));
+            }
+            while (green > 0)
+            {
+                green -= stepsize;
+                if (green < 0) { green = 0; }
+                colors.Add(Color.FromArgb(1, red, green, blue));
+            }
+            int busyLevel = 0;
             foreach (DateTime day in dates)
             {
                 if (day == date)
@@ -241,12 +261,12 @@ namespace SchedulEasy.Services
                     busyLevel++;
                 }
             }
-            busyLevel /= 3;
-            if (busyLevel > 1)
+            if (busyLevel >= colors.Count)
             {
-                busyLevel = 1;
+                busyLevel = colors.Count -1;
             }
-            return busyLevel;
+
+            return ColorTranslator.ToHtml(colors[busyLevel]);
         }
 
         public List<string> GetDescription(DateTime date)
