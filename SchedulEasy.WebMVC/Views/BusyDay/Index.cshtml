@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SchedulEasy.Models.BusyDayListItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusyDayID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Busy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusyEnd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusyDayID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Busy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusyEnd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.BusyDayID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BusyDayID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BusyDayID })
+        </td>
+    </tr>
+    }
+
+</table>

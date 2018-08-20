@@ -1,0 +1,52 @@
+﻿@model SchedulEasy.Models.BusyDayDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BusyDayDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BusyDayID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusyDayID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Busy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Busy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusyEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusyEnd)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BusyDayID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.BusyDayID }) |
+    @Html.ActionLink("Back to Calendar", "Index", "Calendar")
+</p>

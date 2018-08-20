@@ -22,3 +22,106 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+#calendarTable {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#component-header {
+    width: 60%;
+    margin: 50px auto 5px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#component-header a{
+    font-size: 12px;
+}
+
+#component-table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#component-table td,
+#component-table th {
+    width: 14.29%;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    border:1px solid white;
+    background-color:lightgray;
+    border-collapse: collapse;
+}
+
+#component-table td::after {
+    content: '';
+    display: block;
+    margin-top: 100%;
+}
+
+.busyCover {
+    position: absolute;
+    padding: 2px 5px;
+    text-decoration: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: left;
+    background-color: rgb(167,7,7);
+    z-index: 2;
+}
+
+.backDrop {
+    position: absolute;
+    padding: 2px 5px;
+    text-decoration: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: left;
+    background-color: rgb(5,134,5);
+    z-index: 1;
+}
+
+.dt {
+    position: absolute;
+    color: white;
+    text-decoration: none;
+    text-align: left;
+    padding: 2px 5px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index:2;
+}
+
+.selected{
+    border: 2px solid black;
+}
+
+.Descriptions {
+    position: absolute;
+    text-decoration: none;
+    list-style: none;
+    font-size: 11px;
+    color: white;
+    text-align: left;
+    padding: 2px 5px;
+    top: 20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.Descriptions li a{
+    text-decoration: none;
+    color: white;
+}
+
