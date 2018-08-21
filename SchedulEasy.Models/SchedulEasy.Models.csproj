@@ -72,7 +72,10 @@
     <Compile Include="BusyDayListItem.cs" />
     <Compile Include="CalendarModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TeamAddMember.cs" />
+    <Compile Include="TeamCalendarModel.cs" />
     <Compile Include="TeamCreate.cs" />
+    <Compile Include="TeamDataDetail.cs" />
     <Compile Include="TeamDetail.cs" />
     <Compile Include="TeamEdit.cs" />
     <Compile Include="TeamListItem.cs" />

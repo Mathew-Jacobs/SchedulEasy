@@ -41,9 +41,14 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TeamID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TeamID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TeamID })
+            @if (item.OwnerName == User.Identity.Name)
+            {
+                @Html.ActionLink("Add Member", "Create", "TeamData", new { id = item.TeamID }, null) <text> |</text>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TeamID })<text> |</text>
+                @Html.ActionLink("Delete", "Delete", new { id = item.TeamID })<text> |</text>
+            }
+            @Html.ActionLink("View Calendar", "Index", "TeamCalendar", new { teamID = item.TeamID }, null) |
+            @Html.ActionLink("Details", "Details", new { id = item.TeamID })
         </td>
     </tr>
 }

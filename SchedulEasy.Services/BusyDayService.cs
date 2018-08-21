@@ -17,6 +17,17 @@ namespace SchedulEasy.Services
             _userID = userID;
         }
 
+        public BusyDayCreate GetCreateByDate(DateTime date)
+        {
+                return new BusyDayCreate
+                {
+                    DefaultDay = date.ToString("yyyy-MM-dd"),
+                    Busy = DateTime.Now,
+                    BusyEnd = DateTime.Now,
+                    Description = ""
+                };
+        }
+
         public bool CreateBusyDay(BusyDayCreate model)
         {
             if (model.BusyEnd == null || model.BusyEnd < model.Busy)
@@ -28,7 +39,7 @@ namespace SchedulEasy.Services
                 {
                     UserID = _userID,
                     Busy = model.Busy,
-                    BusyEnd = model.BusyEnd,
+                    BusyEnd = (DateTimeOffset)model.BusyEnd,
                     Description = model.Description
                 };
             using (var ctx = new ApplicationDbContext())

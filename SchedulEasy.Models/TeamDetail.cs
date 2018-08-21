@@ -11,5 +11,7 @@ namespace SchedulEasy.Models
         public int TeamID { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
+        public string OwnerName { get; set; }
+        public List<string> Members { get; set; }
     }
 }

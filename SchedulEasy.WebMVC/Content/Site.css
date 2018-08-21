@@ -112,3 +112,20 @@ textarea {
     color: white;
 }
 
+.newBusy {
+    text-decoration: none;
+    color: white;
+    margin-right:3%;
+    float: right;
+    visibility: hidden;
+    font-size: 16px;
+}
+
+.newBusy:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.dt:hover .newBusy {
+    visibility: visible;
+}

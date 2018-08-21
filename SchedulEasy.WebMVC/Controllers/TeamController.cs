@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace SchedulEasy.WebMVC.Controllers
 {
+    [Authorize]
     public class TeamController : Controller
     {
         // GET: Team
@@ -16,7 +17,7 @@ namespace SchedulEasy.WebMVC.Controllers
         {
             var userID = User.Identity.GetUserId();
             var service = new TeamService(userID);
-            var model = service.GetTeams();
+            var model = service.ConvertIDToUserName(service.GetTeams());
             return View(model);
         }
 
@@ -93,6 +94,18 @@ namespace SchedulEasy.WebMVC.Controllers
 
             return View(model);
         }
+
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var svc = CreateTeamService();
+            svc.DeleteTeam(id);
+
+            return RedirectToAction("Index");
+        }
+
 
 
         private TeamService CreateTeamService()

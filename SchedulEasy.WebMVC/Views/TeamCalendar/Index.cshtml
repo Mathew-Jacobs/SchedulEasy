@@ -1,12 +1,12 @@
-﻿@model SchedulEasy.Models.CalendarModel.WeekForMonth
+﻿@model SchedulEasy.Models.TeamCalendarModel.TeamWeekForMonth
 <div id="calendarTable">
 
     <div id="component-header">
         <div id="@Model.prevMonth"
-             class="prevMonth" style="float:left;margin-left:10px;">@Html.ActionLink("Prev", "Index", "Calendar", new { month = Model.prevMonth, year = Model.prevYear }, null)</div>
+             class="prevMonth" style="float:left;margin-left:10px;">@Html.ActionLink("Prev", "Index", "Calendar", new { month = Model.prevMonth, year = Model.prevYear, teamID = Model.TeamID }, null)</div>
             @Model.Week3[0].Date.ToString("MMMM") @Model.Week3[0].Date.Year
             <div id="@Model.nextMonth"
-                 class="nextMonth" style="float:right; margin-right:10px;">@Html.ActionLink("Next", "Index", "Calendar", new { month = Model.nextMonth, year = Model.nextYear, @style = "float:right; margin-right:10px;" }, null)</div>
+                 class="nextMonth" style="float:right; margin-right:10px;">@Html.ActionLink("Next", "Index", "Calendar", new { month = Model.nextMonth, year = Model.nextYear, teamID = Model.TeamID, @style = "float:right; margin-right:10px;" }, null)</div>
             </div>
 
             <div>
@@ -54,7 +54,6 @@
                                                         <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy"})
                                             </div>
                                         </td>
                                     }
@@ -70,7 +69,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -86,7 +84,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -114,7 +111,6 @@
                                                         <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -130,7 +126,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -146,7 +141,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -174,7 +168,6 @@
                                                         <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -190,7 +183,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -206,7 +198,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -234,7 +225,6 @@
                                                         <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -250,7 +240,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -266,7 +255,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -294,7 +282,6 @@
                                                         <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -310,7 +297,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -326,7 +312,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -354,7 +339,6 @@
                                                         <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -370,7 +354,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -386,7 +369,6 @@
                                                         <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }

@@ -21,9 +21,11 @@ namespace SchedulEasy.WebMVC.Controllers
         }
 
         // GET
-        public ActionResult Create()
+        public ActionResult Create(DateTime Busy)
         {
-            return View();
+            var svc = CreateBusyDayService();
+            var model = svc.GetCreateByDate(Busy);
+            return View(model);
         }
 
         [HttpPost]

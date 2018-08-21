@@ -34,6 +34,29 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Members)
+        </dt>
+        <dd></dd>
+        <dt></dt>
+        <dd>
+            @foreach (var item in Model.Members)
+            {
+                if (item == Model.OwnerName)
+                {
+                    <div>
+                        <p>@item</p>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <p>@item    @Html.ActionLink("Remove", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
+                    </div>
+                }
+            }
+        </dd>
+
     </dl>
 </div>
 <p>
