@@ -159,6 +159,21 @@ namespace SchedulEasy.Services
             }
         }
 
+        public bool UpdateTeamMember(TeamDataEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .TeamsData
+                        .Single(e => e.TeamDataID == model.TeamDataID && e.UserID == _userID);
+
+                entity.Private = model.Private;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
         public bool DeleteTeam(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -176,29 +191,34 @@ namespace SchedulEasy.Services
 
         public TeamDataDetail GetMemberByID(string id, int teamID)
         {
+            var userID = "";
+            bool priv = true;
+
             using (var ctx = new ApplicationDbContext())
             {
                 foreach (var item in ctx.Users)
                 {
-
-                        if (item.UserName == id)
-                        {
-                            return
-                            new TeamDataDetail
-                            {
-                                TeamDataID = teamID,
-                                UserName = item.UserName,
-                                UserID = item.Id
-                            };
-                        }
+                    if (item.UserName == id)
+                    {
+                        userID = item.Id;
+                    }
+                }
+                foreach (var item in ctx.TeamsData)
+                {
+                    if (item.TeamID == teamID && item.UserID == userID)
+                    {
+                        priv = item.Private;
+                    }
                 }
                 return
                 new TeamDataDetail
                 {
                     TeamDataID = teamID,
-                    UserID = "null",
-                    UserName = "null"
+                    UserName = id,
+                    UserID = userID,
+                    Private = priv
                 };
+
             }
         }
 

@@ -15,15 +15,22 @@ namespace SchedulEasy.WebMVC.Controllers
         public ActionResult Index(int? month, int? year, int teamID)
         {
             var service = CreateTeamCalendarService();
-            if (month == null || year == null)
+            if (service.AuthorizeUser(teamID))
             {
-                var model = service.GetTeamCalendar(DateTime.Now.Month, DateTime.Now.Year, teamID);
-                return View(model);
+                if (month == null || year == null)
+                {
+                    var model = service.GetTeamCalendar(DateTime.Now.Month, DateTime.Now.Year, teamID);
+                    return View(model);
+                }
+                else
+                {
+                    var model = service.GetTeamCalendar(Convert.ToInt32(month), Convert.ToInt32(year), teamID);
+                    return View(model);
+                }
             }
             else
             {
-                var model = service.GetTeamCalendar(Convert.ToInt32(month), Convert.ToInt32(year), teamID);
-                return View(model);
+                return RedirectToAction("Index", "Team");
             }
         }
 

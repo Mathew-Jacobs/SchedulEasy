@@ -234,25 +234,7 @@ namespace SchedulEasy.Services
         public string GetBusyLevel(DateTime date)
         {
             var dates = GetBusies();
-            int red = 0;
-            int green = 175;
-            int blue = 5;
-            int stepsize = 175;
-            List<Color> colors = new List<Color>();
-            Color color = Color.FromArgb(1, red, green, blue);
-            colors.Add(color);
-            while (red < 175)
-            {
-                red += stepsize;
-                if (red > 175) { red = 175; }
-                colors.Add(Color.FromArgb(1, red, green, blue));
-            }
-            while (green > 0)
-            {
-                green -= stepsize;
-                if (green < 0) { green = 0; }
-                colors.Add(Color.FromArgb(1, red, green, blue));
-            }
+            var colors = GetColorGradient(255);
             int busyLevel = 0;
             foreach (DateTime day in dates)
             {
@@ -267,6 +249,57 @@ namespace SchedulEasy.Services
             }
 
             return ColorTranslator.ToHtml(colors[busyLevel]);
+        }
+
+
+        public List<Color> GetColorGradient(int stepSize)
+        {
+            int redStart = 148; int redStep1 = stepSize * 4;
+            int greenStart = 255; int greenStep1 = stepSize * 0; 
+            int blueStart = 127; int blueStep1 = stepSize * -1;
+
+            int redMid = 255; int redStep2 = stepSize * -2;
+            int greenMid = 255; int greenStep2 = stepSize * -5;
+            int blueMid = 100; int blueStep2 = stepSize * -1;
+
+            int redEnd = 178;
+            int greenEnd = 57;
+            int blueEnd = 59;
+
+            int red = redStart;
+            int green = greenStart;
+            int blue = blueStart;
+
+            List<Color> colors = new List<Color>();
+            Color color = Color.FromArgb(1, redStart, greenStart, blueStart);
+            colors.Add(color);
+
+            while (red < redMid)
+            {
+                red += redStep1;
+                green += greenStep1;
+                blue += blueStep1;
+
+                if (red > redMid) { red = redMid; }
+                if (green > greenMid) { green = greenMid; }
+                if (blue < blueMid) { blue = blueMid; }
+
+                colors.Add(Color.FromArgb(1, red, green, blue));
+            }
+            while (green > greenEnd)
+            {
+                red += redStep2;
+                green += greenStep2;
+                blue += blueStep2;
+
+                if (red < redEnd) { red = redEnd; }
+                if (green < greenEnd) { green = greenEnd; }
+                if (blue < blueEnd) { blue = blueEnd; }
+
+                colors.Add(Color.FromArgb(1, red, green, blue));
+            }
+
+            return colors;
         }
 
         public List<string> GetDescription(DateTime date)

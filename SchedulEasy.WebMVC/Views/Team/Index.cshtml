@@ -12,13 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TeamID)
+            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OwnerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -29,25 +26,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TeamID)
+            @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OwnerName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
+            @Html.ActionLink("View Calendar", "Index", "TeamCalendar", new { teamID = item.TeamID }, null) |
             @if (item.OwnerName == User.Identity.Name)
             {
                 @Html.ActionLink("Add Member", "Create", "TeamData", new { id = item.TeamID }, null) <text> |</text>
                 @Html.ActionLink("Edit", "Edit", new { id = item.TeamID })<text> |</text>
                 @Html.ActionLink("Delete", "Delete", new { id = item.TeamID })<text> |</text>
             }
-            @Html.ActionLink("View Calendar", "Index", "TeamCalendar", new { teamID = item.TeamID }, null) |
             @Html.ActionLink("Details", "Details", new { id = item.TeamID })
         </td>
     </tr>

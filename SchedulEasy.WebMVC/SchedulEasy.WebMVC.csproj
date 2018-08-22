@@ -295,6 +295,7 @@
     <Content Include="Views\TeamData\Create.cshtml" />
     <Content Include="Views\TeamData\Delete.cshtml" />
     <Content Include="Views\TeamCalendar\Index.cshtml" />
+    <Content Include="Views\TeamData\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -76,6 +76,7 @@
     <Compile Include="TeamCalendarModel.cs" />
     <Compile Include="TeamCreate.cs" />
     <Compile Include="TeamDataDetail.cs" />
+    <Compile Include="TeamDataEdit.cs" />
     <Compile Include="TeamDetail.cs" />
     <Compile Include="TeamEdit.cs" />
     <Compile Include="TeamListItem.cs" />

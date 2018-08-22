@@ -16,6 +16,7 @@
         <hr />
 
         @Html.HiddenFor(m => m.TeamID)
+        @Html.HiddenFor(m => m.Private)
 
         <div class="form-group">
             @Html.LabelFor(model => model.UserID, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -34,7 +35,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", "Team")
 </div>
 
 @section Scripts {

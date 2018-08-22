@@ -45,7 +45,8 @@ namespace SchedulEasy.WebMVC.Controllers
                 new TeamAddMember
                 {
                     TeamID = detail.TeamID,
-                    UserID = Convert.ToString(ViewBag.UserID)
+                    UserID = Convert.ToString(ViewBag.UserID),
+                    Private = true
                 };
             return View(model);
         }
@@ -84,7 +85,34 @@ namespace SchedulEasy.WebMVC.Controllers
             return RedirectToAction("Index", "Team");
         }
 
+        public ActionResult Edit(string id, int teamID)
+        {
+            var service = CreateTeamService();
+            var detail = service.GetMemberByID(id, teamID);
+            var model =
+                new TeamDataEdit
+                {
+                    TeamDataID = detail.TeamDataID,
+                    Private = detail.Private
+                };
+            return View(model);
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(TeamDataEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateTeamService();
+
+            if (service.UpdateTeamMember(model))
+            {
+                return RedirectToAction("Index", "Team");
+            }
+
+            return RedirectToAction("Index", "Team");
+        }
 
 
 

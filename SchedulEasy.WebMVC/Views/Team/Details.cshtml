@@ -44,15 +44,33 @@
             {
                 if (item == Model.OwnerName)
                 {
-                    <div>
-                        <p>@item</p>
-                    </div>
+                    if (item == User.Identity.Name)
+                    {
+                        <div>
+                            <p>@item @Html.ActionLink("Update Privacy", "Edit", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <p>@item</p>
+                        </div>
+                    }
                 }
                 else
                 {
-                    <div>
-                        <p>@item    @Html.ActionLink("Remove", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
-                    </div>
+                    if (item == User.Identity.Name)
+                    {
+                        <div>
+                            <p>@item @Html.ActionLink("Update Privacy", "Edit", "TeamData", new { id = @item, teamID = Model.TeamID }, null) | @Html.ActionLink("Remove", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <p>@item @Html.ActionLink("Remove", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
+                        </div>
+                    }
                 }
             }
         </dd>

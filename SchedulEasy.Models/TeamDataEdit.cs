@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace SchedulEasy.Models
 {
-    public class TeamAddMember
+    public class TeamDataEdit
     {
-        public int TeamID { get; set; }
-        public string UserID { get; set; }
+        public int TeamDataID { get; set; }
         public bool Private { get; set; }
     }
 }

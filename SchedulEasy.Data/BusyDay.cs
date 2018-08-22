@@ -15,7 +15,7 @@ namespace SchedulEasy.Data
         public string UserID { get; set; }
 
         [Display(Name = "Short Descripton")]
-        [MaxLength(15,ErrorMessage="Must be shorter than 15 characters")]
+        [MaxLength(30,ErrorMessage="Must be shorter than 30 characters")]
         public string Description { get; set; }
 
         public DateTimeOffset Busy { get; set; }

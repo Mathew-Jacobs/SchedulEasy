@@ -13,7 +13,7 @@ namespace SchedulEasy.Data.Migrations
                     {
                         BusyDayID = c.Int(nullable: false, identity: true),
                         UserID = c.String(maxLength: 128),
-                        Description = c.String(),
+                        Description = c.String(maxLength: 15),
                         Busy = c.DateTimeOffset(nullable: false, precision: 7),
                         BusyEnd = c.DateTimeOffset(nullable: false, precision: 7),
                     })
@@ -96,7 +96,7 @@ namespace SchedulEasy.Data.Migrations
                 c => new
                     {
                         TeamID = c.Int(nullable: false, identity: true),
-                        OwnerID = c.Guid(nullable: false),
+                        OwnerID = c.String(),
                         Title = c.String(),
                         Description = c.String(),
                     })
@@ -109,6 +109,7 @@ namespace SchedulEasy.Data.Migrations
                         TeamDataID = c.Int(nullable: false, identity: true),
                         TeamID = c.Int(nullable: false),
                         UserID = c.String(maxLength: 128),
+                        Private = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.TeamDataID)
                 .ForeignKey("dbo.ApplicationUser", t => t.UserID)

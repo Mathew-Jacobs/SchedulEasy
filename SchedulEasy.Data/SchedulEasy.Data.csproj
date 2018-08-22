@@ -67,21 +67,13 @@
   <ItemGroup>
     <Compile Include="BusyDay.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201808152146469_InitialCreate.cs" />
-    <Compile Include="Migrations\201808152146469_InitialCreate.Designer.cs">
-      <DependentUpon>201808152146469_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201808221705053_InitialCreate.cs" />
+    <Compile Include="Migrations\201808221705053_InitialCreate.Designer.cs">
+      <DependentUpon>201808221705053_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201808162339170_bla.cs" />
-    <Compile Include="Migrations\201808162339170_bla.Designer.cs">
-      <DependentUpon>201808162339170_bla.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808201723111_h.cs" />
-    <Compile Include="Migrations\201808201723111_h.Designer.cs">
-      <DependentUpon>201808201723111_h.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201808202054421_h1.cs" />
-    <Compile Include="Migrations\201808202054421_h1.Designer.cs">
-      <DependentUpon>201808202054421_h1.cs</DependentUpon>
+    <Compile Include="Migrations\201808221944403_desc.cs" />
+    <Compile Include="Migrations\201808221944403_desc.Designer.cs">
+      <DependentUpon>201808221944403_desc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,17 +85,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201808152146469_InitialCreate.resx">
-      <DependentUpon>201808152146469_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808221705053_InitialCreate.resx">
+      <DependentUpon>201808221705053_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808162339170_bla.resx">
-      <DependentUpon>201808162339170_bla.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808201723111_h.resx">
-      <DependentUpon>201808201723111_h.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201808202054421_h1.resx">
-      <DependentUpon>201808202054421_h1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808221944403_desc.resx">
+      <DependentUpon>201808221944403_desc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

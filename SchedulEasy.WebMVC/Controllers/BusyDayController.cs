@@ -62,6 +62,7 @@ namespace SchedulEasy.WebMVC.Controllers
                 {
                     BusyDayID = detail.BusyDayID,
                     Busy = detail.Busy,
+                    BusyEnd = detail.BusyEnd,
                     Description = detail.Description
                 };
             return View(model);
@@ -85,7 +86,7 @@ namespace SchedulEasy.WebMVC.Controllers
                 return RedirectToAction("Index","Calendar");
             }
             
-            ModelState.AddModelError("", "Your note could not be updated.");
+            ModelState.AddModelError("", "Your date could not be updated.");
             return View(model);
         }
 

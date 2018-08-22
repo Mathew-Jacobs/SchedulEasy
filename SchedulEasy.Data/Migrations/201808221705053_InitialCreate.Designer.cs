@@ -7,13 +7,13 @@ namespace SchedulEasy.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class bla : IMigrationMetadata
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(bla));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201808162339170_bla"; }
+            get { return "201808221705053_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

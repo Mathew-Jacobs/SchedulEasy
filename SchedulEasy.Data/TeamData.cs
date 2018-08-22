@@ -14,6 +14,7 @@ namespace SchedulEasy.Data
         public int TeamDataID { get; set; }
         public int TeamID { get; set; }
         public string UserID { get; set; }
+        public bool Private { get; set; }
 
         public virtual Team Team { get; set; }
 
