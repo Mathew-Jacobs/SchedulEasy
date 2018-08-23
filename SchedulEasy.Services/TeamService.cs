@@ -31,7 +31,8 @@ namespace SchedulEasy.Services
                 new TeamData()
                 {
                     TeamID = entity.TeamID,
-                    UserID = entity.OwnerID
+                    UserID = entity.OwnerID,
+                    Private = false
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -48,7 +49,8 @@ namespace SchedulEasy.Services
                 new TeamData()
                 {
                     TeamID = model.TeamID,
-                    UserID = model.UserID
+                    UserID = model.UserID,
+                    Private = model.Private
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -96,7 +98,7 @@ namespace SchedulEasy.Services
                 var entity =
                     ctx
                         .Teams
-                        .Single(e => e.TeamID == id && e.OwnerID == _userID);
+                        .Single(e => e.TeamID == id);
                 var members = GetMembers(id, ctx);
                 foreach (var item in ctx.Users)
                 {
@@ -193,6 +195,7 @@ namespace SchedulEasy.Services
         {
             var userID = "";
             bool priv = true;
+            int dataID = 0;
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -208,12 +211,13 @@ namespace SchedulEasy.Services
                     if (item.TeamID == teamID && item.UserID == userID)
                     {
                         priv = item.Private;
+                        dataID = item.TeamDataID;
                     }
                 }
                 return
                 new TeamDataDetail
                 {
-                    TeamDataID = teamID,
+                    TeamDataID = dataID,
                     UserName = id,
                     UserID = userID,
                     Private = priv

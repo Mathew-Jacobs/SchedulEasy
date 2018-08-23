@@ -49,12 +49,12 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
-                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy"})
+                                                @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
                                             </div>
                                         </td>
                                     }
@@ -65,9 +65,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -81,9 +81,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -109,9 +109,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -125,9 +125,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -141,9 +141,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -169,9 +169,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -185,9 +185,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -201,9 +201,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -229,9 +229,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -245,9 +245,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -261,9 +261,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -289,9 +289,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -305,9 +305,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -321,9 +321,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -349,9 +349,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li class="descList">@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -365,9 +365,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })
@@ -381,9 +381,9 @@
                                             <div id="@item.dateStr" class="dt">
                                                 @item.dtDay
                                                 <ul class="Descriptions">
-                                                    @foreach (string desc in item.Desc)
+                                                    @foreach (var desc in item.BusyDayID)
                                                     {
-                                                        <li>@Html.ActionLink(desc, "Details", "BusyDay", new { id = item.BusyDayID }, null)</li>
+                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID }, null)</li>
                                                     }
                                                 </ul>
                                                 @Html.ActionLink("+", "Create", "BusyDay", new { Busy = item.Date.ToString("yyyy-MM-dd") }, new { @class = "newBusy" })

@@ -11,14 +11,6 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.TeamID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TeamID)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
 
@@ -37,47 +29,47 @@
         <dt>
             @Html.DisplayNameFor(model => model.Members)
         </dt>
-        <dd></dd>
-        <dt></dt>
         <dd>
-            @foreach (var item in Model.Members)
-            {
-                if (item == Model.OwnerName)
+            <ul>
+                @foreach (var item in Model.Members)
                 {
-                    if (item == User.Identity.Name)
+                    if (item == Model.OwnerName)
                     {
-                        <div>
-                            <p>@item @Html.ActionLink("Update Privacy", "Edit", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
-                        </div>
-                    }
-                    else
-                    {
-                        <div>
+                        <li>
                             <p>@item</p>
-                        </div>
-                    }
-                }
-                else
-                {
-                    if (item == User.Identity.Name)
-                    {
-                        <div>
-                            <p>@item @Html.ActionLink("Update Privacy", "Edit", "TeamData", new { id = @item, teamID = Model.TeamID }, null) | @Html.ActionLink("Remove", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
-                        </div>
+                        </li>
                     }
                     else
                     {
-                        <div>
-                            <p>@item @Html.ActionLink("Remove", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
-                        </div>
+                        if (item == User.Identity.Name)
+                        {
+                            <li>
+                                <p>@item @Html.ActionLink("Update Privacy", "Edit", "TeamData", new { id = @item, teamID = Model.TeamID }, null) | @Html.ActionLink("Leave", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
+                            </li>
+                        }
+                        else if (Model.OwnerName == User.Identity.Name)
+                        {
+                            <li>
+                                <p>@item @Html.ActionLink("Remove", "Delete", "TeamData", new { id = @item, teamID = Model.TeamID }, null)</p>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <p>@item</p>
+                            </li>
+                        }
                     }
                 }
-            }
+            </ul>
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.TeamID }) |
+    @if (Model.OwnerName == User.Identity.Name)
+     {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TeamID }) <text>|</text>
+     }
     @Html.ActionLink("Back to List", "Index")
 </p>

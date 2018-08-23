@@ -30,7 +30,7 @@ namespace SchedulEasy.WebMVC.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Team");
+                return RedirectToAction("Details", "Team", new { id = teamID});
             }
         }
 

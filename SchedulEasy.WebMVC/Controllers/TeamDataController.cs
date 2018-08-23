@@ -14,19 +14,16 @@ namespace SchedulEasy.WebMVC.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: TeamData
-        public ActionResult Index(int id)
-        {
-            var svc = CreateTeamService();
-            var detail = svc.GetTeamByID(id);
-            var model = detail.Members;
-            return View(model);
-        }
-
         public ActionResult Create(int id)
         {
             var svc = CreateTeamService();
             var detail = svc.GetTeamByID(id);
+            
+            if (detail.OwnerName != User.Identity.Name)
+            { 
+                return RedirectToAction("Index", "Team");
+            }
+
             List<ApplicationUser> users = db.Users.ToList();
             List<ApplicationUser> nullUsers = new List<ApplicationUser>();
             foreach (ApplicationUser user in users)
@@ -70,6 +67,12 @@ namespace SchedulEasy.WebMVC.Controllers
         {
             var svc = CreateTeamService();
             var model = svc.GetMemberByID(id, teamID);
+            var own = svc.GetTeamByID(teamID);
+
+            if (own.OwnerName != User.Identity.Name && User.Identity.GetUserId() != id)
+            {
+                return RedirectToAction("Index", "Team");
+            }
 
             return View(model);
         }
@@ -87,6 +90,10 @@ namespace SchedulEasy.WebMVC.Controllers
 
         public ActionResult Edit(string id, int teamID)
         {
+            if (User.Identity.Name != id)
+            {
+                return RedirectToAction("Index", "Team");
+            }
             var service = CreateTeamService();
             var detail = service.GetMemberByID(id, teamID);
             var model =

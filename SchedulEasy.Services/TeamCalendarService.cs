@@ -251,7 +251,7 @@ namespace SchedulEasy.Services
         {
             List<string> userIDs = GetTeamMembers(teamID);
             var dates = GetBusies(teamID);
-            var colors = GetColorGradient(Convert.ToInt32(Math.Floor(255m / userIDs.Count)));
+            var colors = GetColorGradient(10);
             int busyLevel = 0;
             foreach (DateTime day in dates)
             {
@@ -273,6 +273,8 @@ namespace SchedulEasy.Services
             int redStart = 148; int redStep1 = stepSize * 4;
             int greenStart = 255; int greenStep1 = stepSize * 0;
             int blueStart = 127; int blueStep1 = stepSize * -1;
+
+            stepSize = 20;
 
             int redMid = 255; int redStep2 = stepSize * -2;
             int greenMid = 255; int greenStep2 = stepSize * -5;
@@ -359,12 +361,11 @@ namespace SchedulEasy.Services
             {
                 foreach (var item in ctx.TeamsData)
                 {
-                    if (item.TeamID == teamID && item.UserID == _userID)
+                    if (item.TeamID == teamID && item.UserID == _userID && item.Private == false)
                     {
                         return true;
                     }
                 }
-
                 return false;
             }
         }

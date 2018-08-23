@@ -33,9 +33,8 @@ namespace SchedulEasy.Models
             public string dateStr { get; set; }
             public int dtDay { get; set; }
             public int? daycolumn { get; set; }
-            public int BusyDayID { get; set; }
+            public List<DescAndID> BusyDayID { get; set; }
             public string BusyLevel { get; set; }
-            public List<string> Desc { get; set; }
         }
     }
 }

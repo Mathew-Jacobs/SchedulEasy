@@ -96,7 +96,7 @@ textarea {
     text-decoration: none;
     list-style: none;
     font-size: 11px;
-    color: white;
+    color: rgba(255, 255, 255, 0.20);
     text-align: left;
     padding: 2px 5px;
     top: 20%;
@@ -104,52 +104,59 @@ textarea {
     left: 0;
     right: 0;
     z-index: 2;
-    background-color: black;
-    opacity: 0.2;
-    overflow-y: hidden; 
+    background-color: rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
 .Descriptions:hover {
-    opacity: 0.6;
+    background-color: rgba(0,0,0,0.6);
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .Descriptions::-webkit-scrollbar {
     background-color: transparent;
+    width: 10px;
+}
+
+.Descriptions::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.80);
+    border-radius: 5px;
+    width: 10px;
 }
 
 .Descriptions:hover li {
-    background-color: white;
-    border: 2px solid black;
-    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.80);
+    margin-top: 2px;
+    padding: 3px;
 }
 
 .Descriptions li a {
     text-decoration: none;
-    color: white;
+    color: rgba(255, 255, 255, 0);
 }
 
 .Descriptions:hover li a {
-    color: black;
+    color: rgba(255, 255, 255, 0.80);
 }
 
 .newBusy {
     text-decoration: none;
-    color: white;
-    border-radius: 50%;
-    width: 23px;
-    padding-left: 7px;
-    background-color: black;
-    margin:3%;
+    color: transparent;
+    width: 18%;
+    height: 18%;
+    text-align:center;
+    background: url(../Content/Assets/PlusIcon_Plus.svg) no-repeat top left;
+    margin:1% auto;
     float: right;
     visibility: hidden;
-    font-size: 16px;
-
+    font-size: 15px;
+    z-index: 1;
 }
 
 .newBusy:hover {
     text-decoration: none;
-    color: white;
+    color: transparent;
 }
 
 .dt:hover .newBusy {
