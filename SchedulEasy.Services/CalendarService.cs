@@ -21,7 +21,7 @@ namespace SchedulEasy.Services
             _userID = userID;
         }
 
-        
+        //TODO: fix DB... I liked the calendar with the colors. and the user name//
 
         public WeekForMonth GetCalendar(int month, int year)
         {
