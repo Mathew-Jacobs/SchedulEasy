@@ -77,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SchedulEasy.Contracts\SchedulEasy.Contracts.csproj">
+      <Project>{0B3EBD13-C763-4CB1-9DFE-420C8084EF79}</Project>
+      <Name>SchedulEasy.Contracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchedulEasy.Data\SchedulEasy.Data.csproj">
       <Project>{0a2a1317-b66b-47aa-b3d5-7d688eb33df8}</Project>
       <Name>SchedulEasy.Data</Name>

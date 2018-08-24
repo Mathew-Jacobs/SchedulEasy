@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulEasy.Models", "Sched
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulEasy.Services", "SchedulEasy.Services\SchedulEasy.Services.csproj", "{70E20923-A1B6-4B37-AE18-1C1170909464}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulEasy.Contracts", "SchedulEasy.Contracts\SchedulEasy.Contracts.csproj", "{0B3EBD13-C763-4CB1-9DFE-420C8084EF79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{70E20923-A1B6-4B37-AE18-1C1170909464}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70E20923-A1B6-4B37-AE18-1C1170909464}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70E20923-A1B6-4B37-AE18-1C1170909464}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B3EBD13-C763-4CB1-9DFE-420C8084EF79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B3EBD13-C763-4CB1-9DFE-420C8084EF79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B3EBD13-C763-4CB1-9DFE-420C8084EF79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B3EBD13-C763-4CB1-9DFE-420C8084EF79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

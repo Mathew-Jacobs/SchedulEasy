@@ -66,22 +66,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusyDayCreate.cs" />
-    <Compile Include="BusyDayDetail.cs" />
-    <Compile Include="BusyDayDetailValidation.cs" />
-    <Compile Include="BusyDayEdit.cs" />
-    <Compile Include="BusyDayListItem.cs" />
-    <Compile Include="CalendarModel.cs" />
-    <Compile Include="DescAndID.cs" />
+    <Compile Include="BusyDay\BusyDayCreate.cs" />
+    <Compile Include="BusyDay\BusyDayDetail.cs" />
+    <Compile Include="BusyDay\BusyDayDetailValidation.cs" />
+    <Compile Include="BusyDay\BusyDayEdit.cs" />
+    <Compile Include="BusyDay\BusyDayListItem.cs" />
+    <Compile Include="Calendar\CalendarModel.cs" />
+    <Compile Include="TeamData\DescAndID.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TeamAddMember.cs" />
-    <Compile Include="TeamCalendarModel.cs" />
-    <Compile Include="TeamCreate.cs" />
-    <Compile Include="TeamDataDetail.cs" />
-    <Compile Include="TeamDataEdit.cs" />
-    <Compile Include="TeamDetail.cs" />
-    <Compile Include="TeamEdit.cs" />
-    <Compile Include="TeamListItem.cs" />
+    <Compile Include="TeamData\TeamAddMember.cs" />
+    <Compile Include="Calendar\TeamCalendarModel.cs" />
+    <Compile Include="Team\TeamCreate.cs" />
+    <Compile Include="TeamData\TeamDataDetail.cs" />
+    <Compile Include="TeamData\TeamDataEdit.cs" />
+    <Compile Include="Team\TeamDetail.cs" />
+    <Compile Include="Team\TeamEdit.cs" />
+    <Compile Include="Team\TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
