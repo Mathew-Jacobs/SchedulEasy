@@ -1,4 +1,4 @@
-﻿@model SchedulEasy.Models.BusyDayDetail
+﻿@model SchedulEasy.Models.BusyDayDetailValidation
 
 @{
     ViewBag.Title = "Details";
@@ -11,42 +11,53 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.BusyDayID)
+            @Html.DisplayNameFor(model => model.busyDayDetail.BusyDayID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BusyDayID)
+            @Html.DisplayFor(model => model.busyDayDetail.BusyDayID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Busy)
+            @Html.DisplayNameFor(model => model.busyDayDetail.Busy)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Busy)
+            @Html.DisplayFor(model => model.busyDayDetail.Busy)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BusyEnd)
+            @Html.DisplayNameFor(model => model.busyDayDetail.BusyEnd)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BusyEnd)
+            @Html.DisplayFor(model => model.busyDayDetail.BusyEnd)
         </dd>
 
 
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.busyDayDetail.Description)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.busyDayDetail.Description)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.BusyDayID }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.BusyDayID }) |
-    @Html.ActionLink("Back to Calendar", "Index", "Calendar")
+    @if (Model.Authenticated)
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.busyDayDetail.BusyDayID }) <text> |</text>
+        @Html.ActionLink("Delete", "Delete", new { id = Model.busyDayDetail.BusyDayID }) <text> |</text>
+    }
+    @if (Model.TeamID != null)
+    {
+        @Html.ActionLink("Back to Calendar", "Index", "TeamCalendar", new { teamID = Model.TeamID }, null)
+    }
+    else
+    {
+        @Html.ActionLink("Back to Calendar", "Index", "Calendar")
+    }
+
 </p>

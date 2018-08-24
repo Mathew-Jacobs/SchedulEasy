@@ -44,11 +44,10 @@ namespace SchedulEasy.WebMVC.Controllers
             return RedirectToAction("Index","Calendar");
         }
 
-
-        public ActionResult Details(int id)
+        public ActionResult Details(int id, int ? teamID)
         {
             var svc = CreateBusyDayService();
-            var model = svc.GetBusyDayByID(id);
+            var model = svc.GetBusyDayByIDAndTeam(id, teamID);
 
             return View(model);
         }
@@ -57,13 +56,17 @@ namespace SchedulEasy.WebMVC.Controllers
         {
             var service = CreateBusyDayService();
             var detail = service.GetBusyDayByID(id);
+            if (!detail.Authenticated)
+            {
+                RedirectToAction("Index", "Calendar");
+            }
             var model =
                 new BusyDayEdit
                 {
-                    BusyDayID = detail.BusyDayID,
-                    Busy = detail.Busy,
-                    BusyEnd = detail.BusyEnd,
-                    Description = detail.Description
+                    BusyDayID = detail.busyDayDetail.BusyDayID,
+                    Busy = detail.busyDayDetail.Busy,
+                    BusyEnd = detail.busyDayDetail.BusyEnd,
+                    Description = detail.busyDayDetail.Description
                 };
             return View(model);
         }
@@ -96,6 +99,11 @@ namespace SchedulEasy.WebMVC.Controllers
             var svc = CreateBusyDayService();
             var model = svc.GetBusyDayByID(id);
 
+            if (!model.Authenticated)
+            {
+                RedirectToAction("Index", "Calendar");
+            }
+
             return View(model);
         }
 
@@ -109,11 +117,6 @@ namespace SchedulEasy.WebMVC.Controllers
             service.DeleteDay(id);
 
             return RedirectToAction("Index","Calendar");
-        }
-
-        public ActionResult CalendarTest()
-        {
-            return View();
         }
 
         private BusyDayService CreateBusyDayService()

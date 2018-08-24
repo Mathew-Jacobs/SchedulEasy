@@ -71,21 +71,86 @@ namespace SchedulEasy.Services
             }
         }
 
-        public BusyDayDetail GetBusyDayByID(int id)
+        public BusyDayDetailValidation GetBusyDayByID(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                bool valid;
                 var entity =
                     ctx
                         .BusyDays
-                        .Single(e => e.BusyDayID == id && e.UserID == _userID);
-                return new BusyDayDetail
+                        .Single(e => e.BusyDayID == id);
+                if (entity.UserID == _userID)
+                {
+                    valid = true;
+                }
+                else
+                {
+                    valid = false;
+                }
+
+                new BusyDayDetail
                 {
                     BusyDayID = entity.BusyDayID,
                     Busy = entity.Busy,
                     BusyEnd = entity.BusyEnd,
                     Description = entity.Description
                 };
+
+                BusyDayDetailValidation model = new BusyDayDetailValidation
+                {
+                    Authenticated = valid,
+                    busyDayDetail = new BusyDayDetail
+                    {
+                        BusyDayID = entity.BusyDayID,
+                        Busy = entity.Busy,
+                        BusyEnd = entity.BusyEnd,
+                        Description = entity.Description
+                    }
+                };
+                return model;
+            }        
+        }
+
+        public BusyDayDetailValidation GetBusyDayByIDAndTeam(int id, int ? teamID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                bool valid;
+                var entity =
+                    ctx
+                        .BusyDays
+                        .Single(e => e.BusyDayID == id);
+                if (entity.UserID == _userID)
+                {
+                    valid = true;
+                }
+                else
+                {
+                    valid = false;
+                }
+
+                new BusyDayDetail
+                {
+                    BusyDayID = entity.BusyDayID,
+                    Busy = entity.Busy,
+                    BusyEnd = entity.BusyEnd,
+                    Description = entity.Description
+                };
+
+                BusyDayDetailValidation model = new BusyDayDetailValidation
+                {
+                    Authenticated = valid,
+                    TeamID = teamID,
+                    busyDayDetail = new BusyDayDetail
+                    {
+                        BusyDayID = entity.BusyDayID,
+                        Busy = entity.Busy,
+                        BusyEnd = entity.BusyEnd,
+                        Description = entity.Description
+                    }
+                };
+                return model;
             }
         }
 

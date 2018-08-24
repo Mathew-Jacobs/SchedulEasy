@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="BusyDayCreate.cs" />
     <Compile Include="BusyDayDetail.cs" />
+    <Compile Include="BusyDayDetailValidation.cs" />
     <Compile Include="BusyDayEdit.cs" />
     <Compile Include="BusyDayListItem.cs" />
     <Compile Include="CalendarModel.cs" />

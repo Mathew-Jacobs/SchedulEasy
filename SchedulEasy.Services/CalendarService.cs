@@ -242,7 +242,7 @@ namespace SchedulEasy.Services
         public string GetBusyLevel(DateTime date)
         {
             var dates = GetBusies();
-            var colors = GetColorGradient(30);
+            var colors = GetColorGradient(1);
             int busyLevel = 0;
             foreach (DateTime day in dates)
             {
@@ -260,21 +260,27 @@ namespace SchedulEasy.Services
         }
 
 
-        public List<Color> GetColorGradient(int stepSize)
+        public List<Color> GetColorGradient(int stepNumber)
         {
-            int redStart = 148; int redStep1 = stepSize * 4;
-            int greenStart = 255; int greenStep1 = stepSize * 0; 
-            int blueStart = 127; int blueStep1 = stepSize * -1;
+            int redStart = 148;
+            int greenStart = 255;
+            int blueStart = 127;
 
-            stepSize = 40;
-
-            int redMid = 255; int redStep2 = stepSize * -2;
-            int greenMid = 255; int greenStep2 = stepSize * -5;
-            int blueMid = 100; int blueStep2 = stepSize * -1;
+            int redMid = 255;
+            int greenMid = 255;
+            int blueMid = 100;
 
             int redEnd = 178;
             int greenEnd = 57;
             int blueEnd = 59;
+
+            int redStep1 = Convert.ToInt32(Math.Ceiling((redMid - redStart) / (stepNumber + 1m)));
+            int greenStep1 = Convert.ToInt32(Math.Ceiling((greenMid - greenStart) / (stepNumber + 1m)));
+            int blueStep1 = Convert.ToInt32(Math.Ceiling((blueMid - blueStart) / (stepNumber + 1m)));
+
+            int redStep2 = Convert.ToInt32(Math.Ceiling((redEnd - redMid) / (stepNumber + 1m)));
+            int greenStep2 = Convert.ToInt32(Math.Ceiling((greenEnd - greenMid) / (stepNumber + 1m)));
+            int blueStep2 = Convert.ToInt32(Math.Ceiling((blueEnd - blueMid) / (stepNumber + 1m)));
 
             int red = redStart;
             int green = greenStart;
