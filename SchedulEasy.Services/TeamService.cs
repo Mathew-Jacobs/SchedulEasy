@@ -1,4 +1,5 @@
-﻿using SchedulEasy.Data;
+﻿using SchedulEasy.Contracts;
+using SchedulEasy.Data;
 using SchedulEasy.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchedulEasy.Services
 {
-    public class TeamService
+    public class TeamService : ITeam
     {
         private readonly string _userID;
 
@@ -120,8 +121,6 @@ namespace SchedulEasy.Services
                 };
             }
         }
-
-
 
         public List<string> GetMembers(int id, ApplicationDbContext ctx)
         {
@@ -247,8 +246,6 @@ namespace SchedulEasy.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-
 
         public IEnumerable<TeamListItem> ConvertIDToUserName(IEnumerable<TeamListItem> listItems)
         {

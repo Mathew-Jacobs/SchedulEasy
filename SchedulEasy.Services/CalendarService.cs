@@ -1,4 +1,5 @@
-﻿using SchedulEasy.Data;
+﻿using SchedulEasy.Contracts;
+using SchedulEasy.Data;
 using SchedulEasy.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using static SchedulEasy.Models.CalendarModel;
 
 namespace SchedulEasy.Services
 {
-    public class CalendarService
+    public class CalendarService : ICalendar
     {
 
         private readonly string _userID;

@@ -1,4 +1,5 @@
-﻿using SchedulEasy.Data;
+﻿using SchedulEasy.Contracts;
+using SchedulEasy.Data;
 using SchedulEasy.Models;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SchedulEasy.Services
 {
-    public class BusyDayService
+    public class BusyDayService : IBusyDay
     {
         private readonly string _userID;
 
@@ -69,47 +70,6 @@ namespace SchedulEasy.Services
                         );
                 return query.ToArray();
             }
-        }
-
-        public BusyDayDetailValidation GetBusyDayByID(int id)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                bool valid;
-                var entity =
-                    ctx
-                        .BusyDays
-                        .Single(e => e.BusyDayID == id);
-                if (entity.UserID == _userID)
-                {
-                    valid = true;
-                }
-                else
-                {
-                    valid = false;
-                }
-
-                new BusyDayDetail
-                {
-                    BusyDayID = entity.BusyDayID,
-                    Busy = entity.Busy,
-                    BusyEnd = entity.BusyEnd,
-                    Description = entity.Description
-                };
-
-                BusyDayDetailValidation model = new BusyDayDetailValidation
-                {
-                    Authenticated = valid,
-                    busyDayDetail = new BusyDayDetail
-                    {
-                        BusyDayID = entity.BusyDayID,
-                        Busy = entity.Busy,
-                        BusyEnd = entity.BusyEnd,
-                        Description = entity.Description
-                    }
-                };
-                return model;
-            }        
         }
 
         public BusyDayDetailValidation GetBusyDayByIDAndTeam(int id, int ? teamID)
