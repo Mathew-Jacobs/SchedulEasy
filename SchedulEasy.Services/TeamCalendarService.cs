@@ -1,5 +1,7 @@
 ﻿using SchedulEasy.Contracts;
 using SchedulEasy.Data;
+using SchedulEasy.Models;
+using SchedulEasy.Models.Calendar;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -31,7 +33,6 @@ namespace SchedulEasy.Services
             weeks.TeamID = teamID;
 
             List<DateTime> dt = new List<DateTime>();
-            List<DateTime> bd = GetBusies(teamID);
             dt = GetDates(year, month);
 
 
@@ -46,9 +47,8 @@ namespace SchedulEasy.Services
                         dy1.dateStr = day.ToString("MM/dd/yyyy");
                         dy1.dtDay = day.Day;
                         dy1.daycolumn = GetDateInfo(dy1.Date);
-                        dy1.BusyDayID = GetBusyDayID(day,teamID);
+                        dy1.BusyDayID = GetDescription(day, teamID);
                         dy1.BusyLevel = GetBusyLevel(day,teamID);
-                        dy1.Desc = GetDescription(day,teamID);
                         weeks.Week1.Add(dy1);
                         break;
                     case 2:
@@ -58,9 +58,8 @@ namespace SchedulEasy.Services
                         dy2.dateStr = day.ToString("MM/dd/yyyy");
                         dy2.dtDay = day.Day;
                         dy2.daycolumn = GetDateInfo(dy2.Date);
-                        dy2.BusyDayID = GetBusyDayID(day,teamID);
+                        dy2.BusyDayID = GetDescription(day, teamID);
                         dy2.BusyLevel = GetBusyLevel(day,teamID);
-                        dy2.Desc = GetDescription(day,teamID);
                         weeks.Week2.Add(dy2);
                         break;
                     case 3:
@@ -70,9 +69,8 @@ namespace SchedulEasy.Services
                         dy3.dateStr = day.ToString("MM/dd/yyyy");
                         dy3.dtDay = day.Day;
                         dy3.daycolumn = GetDateInfo(dy3.Date);
-                        dy3.BusyDayID = GetBusyDayID(day,teamID);
+                        dy3.BusyDayID = GetDescription(day, teamID);
                         dy3.BusyLevel = GetBusyLevel(day,teamID);
-                        dy3.Desc = GetDescription(day,teamID);
                         weeks.Week3.Add(dy3);
                         break;
                     case 4:
@@ -82,9 +80,8 @@ namespace SchedulEasy.Services
                         dy4.dateStr = day.ToString("MM/dd/yyyy");
                         dy4.dtDay = day.Day;
                         dy4.daycolumn = GetDateInfo(dy4.Date);
-                        dy4.BusyDayID = GetBusyDayID(day,teamID);
+                        dy4.BusyDayID = GetDescription(day, teamID);
                         dy4.BusyLevel = GetBusyLevel(day,teamID);
-                        dy4.Desc = GetDescription(day,teamID);
                         weeks.Week4.Add(dy4);
                         break;
                     case 5:
@@ -94,9 +91,8 @@ namespace SchedulEasy.Services
                         dy5.dateStr = day.ToString("MM/dd/yyyy");
                         dy5.dtDay = day.Day;
                         dy5.daycolumn = GetDateInfo(dy5.Date);
-                        dy5.BusyDayID = GetBusyDayID(day,teamID);
+                        dy5.BusyDayID = GetDescription(day, teamID);
                         dy5.BusyLevel = GetBusyLevel(day,teamID);
-                        dy5.Desc = GetDescription(day,teamID);
                         weeks.Week5.Add(dy5);
                         break;
                     case 6:
@@ -106,9 +102,8 @@ namespace SchedulEasy.Services
                         dy6.dateStr = day.ToString("MM/dd/yyyy");
                         dy6.dtDay = day.Day;
                         dy6.daycolumn = GetDateInfo(dy6.Date);
-                        dy6.BusyDayID = GetBusyDayID(day,teamID);
+                        dy6.BusyDayID = GetDescription(day, teamID);
                         dy6.BusyLevel = GetBusyLevel(day,teamID);
-                        dy6.Desc = GetDescription(day,teamID);
                         weeks.Week6.Add(dy6);
                         break;
                 };
@@ -201,10 +196,10 @@ namespace SchedulEasy.Services
             return dayNumber;
         }
 
-        public List<DateTime> GetBusies(int teamID)
+        public List<BusyData> GetBusies(int teamID)
         {
-            List<DateTime> dates = new List<DateTime>();
-            
+            List<BusyData> dateData = new List<BusyData>();
+
             using (var ctx = new ApplicationDbContext())
             {
                 List<string> userIDs = GetTeamMembers(teamID);
@@ -218,16 +213,29 @@ namespace SchedulEasy.Services
                         {
                             for (int i = 0; i < busyLength; i++)
                             {
-                                dates.Add(busyDay.AddDays(i));
+                                BusyData data = new BusyData
+                                {
+                                    Day = busyDay.AddDays(i),
+                                    Description = busy.Description,
+                                    ID = busy.BusyDayID
+                                };
+
+                                dateData.Add(data);
                             }
                         }
                         else
                         {
-                            dates.Add(busy.Busy.DateTime);
+                            BusyData data = new BusyData
+                            {
+                                Day = busy.Busy.DateTime,
+                                Description = busy.Description,
+                                ID = busy.BusyDayID
+                            };
+                            dateData.Add(data);
                         }
                     }
                 }
-                return dates;
+                return dateData;
             }
         }
 
@@ -254,9 +262,9 @@ namespace SchedulEasy.Services
             var dates = GetBusies(teamID);
             var colors = GetColorGradient(userIDs.Count);
             int busyLevel = 0;
-            foreach (DateTime day in dates)
+            foreach (var day in dates)
             {
-                if (day == date)
+                if (day.Day == date)
                 {
                     busyLevel++;
                 }
@@ -327,17 +335,37 @@ namespace SchedulEasy.Services
             return colors;
         }
 
-        public List<string> GetDescription(DateTime date, int teamID)
+        public List<DescAndID> GetDescription(DateTime date, int teamID)
         {
-            List<string> list = new List<string>();
-            List<DateTime> busyDays = GetBusies(teamID);
+            List<DescAndID> list = new List<DescAndID>();
+
+            var dateData = GetBusies(teamID);
+            var dates = new List<DateTime>();
+
+            foreach (var item in dateData)
+            {
+                dates.Add(item.Day);
+            }
+
             using (var ctx = new ApplicationDbContext())
             {
                 foreach (BusyDay day in ctx.BusyDays.ToList())
                 {
-                    if (day.Busy.DateTime == date && busyDays.Contains(day.Busy.DateTime))
+                    if (date >= day.Busy && date <= day.BusyEnd)
                     {
-                        list.Add(day.Description);
+                        foreach (var data in dateData)
+                        {
+                            if (date == data.Day && !list.Contains(new DescAndID { Description = data.Description, ID = day.BusyDayID }))
+                            {
+                                DescAndID item = new DescAndID
+                                {
+                                    Description = data.Description,
+                                    ID = data.ID
+                                };
+                                list.Add(item);
+                            }
+                        }
+                        break;
                     }
                 }
 
@@ -345,20 +373,28 @@ namespace SchedulEasy.Services
             }
         }
 
-        public int GetBusyDayID(DateTime date, int teamID)
+        public List<int> GetBusyDayID(DateTime date, int teamID)
         {
-            List<DateTime> busyDays = GetBusies(teamID);
+            var dateData = GetBusies(teamID);
+            var dates = new List<DateTime>();
+
+            foreach (var item in dateData)
+            {
+                dates.Add(item.Day);
+            }
+
+            List<int> ids = new List<int>();
             using (var ctx = new ApplicationDbContext())
             {
                 foreach (BusyDay day in ctx.BusyDays.ToList())
                 {
-                    if (day.Busy.DateTime == date && busyDays.Contains(day.Busy.DateTime))
+                    if (day.Busy.DateTime == date && dates.Contains(day.Busy.DateTime))
                     {
-                        return day.BusyDayID;
+                        ids.Add(day.BusyDayID);
                     }
                 }
 
-                return 0;
+                return ids;
             }
         }
 

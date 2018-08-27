@@ -71,6 +71,7 @@
     <Compile Include="BusyDay\BusyDayDetailValidation.cs" />
     <Compile Include="BusyDay\BusyDayEdit.cs" />
     <Compile Include="BusyDay\BusyDayListItem.cs" />
+    <Compile Include="Calendar\BusyData.cs" />
     <Compile Include="Calendar\CalendarModel.cs" />
     <Compile Include="TeamData\DescAndID.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

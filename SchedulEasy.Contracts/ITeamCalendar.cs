@@ -1,4 +1,5 @@
 ﻿using SchedulEasy.Models;
+using SchedulEasy.Models.Calendar;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,15 +17,15 @@ namespace SchedulEasy.Contracts
 
         int GetDateInfo(DateTime now);
 
-        List<DateTime> GetBusies(int teamID);
+        List<BusyData> GetBusies(int teamID);
 
         string GetBusyLevel(DateTime date, int teamID);
 
         List<Color> GetColorGradient(int stepNumber);
 
-        List<string> GetDescription(DateTime date, int teamID);
+        List<DescAndID> GetDescription(DateTime date, int teamID);
 
-        int GetBusyDayID(DateTime date, int teamID);
+        List<int> GetBusyDayID(DateTime date, int teamID);
 
         bool AuthorizeUser(int teamID);
     }

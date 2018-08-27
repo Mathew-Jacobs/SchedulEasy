@@ -1,4 +1,5 @@
 ﻿using SchedulEasy.Models;
+using SchedulEasy.Models.Calendar;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,7 +16,7 @@ namespace SchedulEasy.Contracts
 
         int GetDateInfo(DateTime now);
 
-        List<DateTime> GetBusies();
+        List<BusyData> GetBusies();
 
         string GetBusyLevel(DateTime date);
 

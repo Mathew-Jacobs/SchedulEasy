@@ -52,10 +52,10 @@ namespace SchedulEasy.WebMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, int ? teamID)
         {
             var service = CreateBusyDayService();
-            var detail = service.GetBusyDayByID(id);
+            var detail = service.GetBusyDayByIDAndTeam(id, teamID);
             if (!detail.Authenticated)
             {
                 RedirectToAction("Index", "Calendar");
@@ -94,17 +94,17 @@ namespace SchedulEasy.WebMVC.Controllers
         }
 
         [ActionName("Delete")]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int ? teamID)
         {
             var svc = CreateBusyDayService();
-            var model = svc.GetBusyDayByID(id);
+            var model = svc.GetBusyDayByIDAndTeam(id, teamID);
 
             if (!model.Authenticated)
             {
                 RedirectToAction("Index", "Calendar");
             }
 
-            return View(model);
+            return View(model.busyDayDetail);
         }
 
         [HttpPost]
