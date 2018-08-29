@@ -47,6 +47,7 @@ textarea {
 .mainCal .year {
     padding: 10px 0 0 20px;
     font-size: 2em;
+    color: rgb(178, 57, 59);
 }
 
 #calendarTable {

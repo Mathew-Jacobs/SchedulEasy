@@ -20,7 +20,7 @@
                         <table id="component-table">
                             <thead>
                                 <tr>
-                                    <th colspan="7" style="background-color:transparent"><a class="monthLink" href="/Calendar?month=@Model.weeks[i].MonthInfo.Month&amp;year=2018">@Model.weeks[i].MonthInfo.ToString("MMMM")</a></th>
+                                    <th colspan="7" style="background-color:transparent"><a class="monthLink" href="/Calendar?month=@Model.weeks[i].MonthInfo.Month&amp;year=2018">@Model.weeks[i].MonthInfo.ToString("MMM")</a></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -229,7 +229,7 @@
                         <table id="component-table">
                             <thead>
                                 <tr>
-                                    <th colspan="7" style="background-color:transparent"><a href="/Calendar?month=@Model.weeks[i+1].MonthInfo.Month&amp;year=2018">@Model.weeks[i + 1].MonthInfo.ToString("MMMM")</a></th>
+                                    <th colspan="7" style="background-color:transparent"><a href="/Calendar?month=@Model.weeks[i+1].MonthInfo.Month&amp;year=2018">@Model.weeks[i + 1].MonthInfo.ToString("MMM")</a></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -438,7 +438,11 @@
                         <table id="component-table">
                             <thead>
                                 <tr>
-                                    <th colspan="7" style="background-color:transparent"><a href="/Calendar?month=@Model.weeks[i+2].MonthInfo.Month&amp;year=2018">@Model.weeks[i + 2].MonthInfo.ToString("MMMM")</a></th>
+                                    <th colspan="7" style="background-color:transparent">
+                                        <a href="/Calendar?month=@Model.weeks[i+2].MonthInfo.Month&amp;year=2018">
+                                            @Model.weeks[i + 2].MonthInfo.ToString("MMM")
+                                        </a>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
