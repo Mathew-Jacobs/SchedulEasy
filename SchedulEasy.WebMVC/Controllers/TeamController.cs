@@ -13,11 +13,16 @@ namespace SchedulEasy.WebMVC.Controllers
     public class TeamController : Controller
     {
         // GET: Team
-        public ActionResult Index()
+        public ViewResult Index(string searchString)
         {
             var userID = User.Identity.GetUserId();
             var service = new TeamService(userID);
             var model = service.ConvertIDToUserName(service.GetTeams());
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(s => s.Title.ToLower().Contains(searchString.ToLower())
+                                      || s.OwnerName.ToLower().Contains(searchString.ToLower()));
+            }
             return View(model);
         }
 

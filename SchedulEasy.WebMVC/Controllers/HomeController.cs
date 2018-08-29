@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using SchedulEasy.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +12,9 @@ namespace SchedulEasy.WebMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var svc = CreateCalendarService();
+            var model = svc.GetYearCalendar();
+            return View(model);
         }
 
         public ActionResult About()
@@ -25,6 +29,13 @@ namespace SchedulEasy.WebMVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        private CalendarService CreateCalendarService()
+        {
+            var userID = User.Identity.GetUserId();
+            var service = new CalendarService(userID);
+            return service;
         }
     }
 }

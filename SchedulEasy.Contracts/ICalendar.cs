@@ -18,12 +18,12 @@ namespace SchedulEasy.Contracts
 
         List<BusyData> GetBusies();
 
-        string GetBusyLevel(DateTime date);
+        string GetBusyLevel(DateTime date, List<BusyData> busies);
 
         List<Color> GetColorGradient(int stepNumber);
 
-        List<DescAndID> GetDescription(DateTime date);
+        List<DescAndID> GetDescription(DateTime date, List<BusyData> busies);
 
-        List<int> GetBusyDayID(DateTime date);
+        List<int> GetBusyDayID(DateTime date, List<BusyData> busies);
     }
 }

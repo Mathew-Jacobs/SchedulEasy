@@ -4,47 +4,62 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>My Groups</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Search: <input class="searchBox" id="searchString" name="searchString" type="text" value="">
+        <input type="submit" value="Search" />
+    </p>
+}
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OwnerName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("View Calendar", "Index", "TeamCalendar", new { teamID = item.TeamID }, null) |
-            @if (item.OwnerName == User.Identity.Name)
-            {
-                @Html.ActionLink("Add Member", "Create", "TeamData", new { id = item.TeamID }, null) <text> |</text>
-                @Html.ActionLink("Edit", "Edit", new { id = item.TeamID })<text> |</text>
-                @Html.ActionLink("Delete", "Delete", new { id = item.TeamID })<text> |</text>
-            }
-            @Html.ActionLink("Details", "Details", new { id = item.TeamID })
-        </td>
-    </tr>
-}
+<div class="teamWrapper">
 
-</table>
+    @foreach (var item in Model)
+    {
+        <div class="team">
+            <div class="titleRow">
+                <div class="title">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </div>
+                <div class="owner">
+                    @Html.DisplayFor(modelItem => item.OwnerName)
+                </div>
+            </div>
+            <div class="descriptionBox">
+                <p>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </p>
+                @if (item.OwnerName == User.Identity.Name)
+                {
+                    <div>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.TeamID })<text> |</text>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.TeamID })
+                    </div>
+                }
+            </div>
+            @Html.ActionLink("V", "Index", "TeamCalendar", new { teamID = item.TeamID }, new { @class = "ToCalendar" })
+            <div class="detailBox">
+                <div class="detailContent">
+                    @if (item.OwnerName == User.Identity.Name)
+                    {
+                        <div>
+                            @Html.ActionLink("Add Member", "Create", "TeamData", new { id = item.TeamID }, null)
+                        </div>
+                    }
+                    @Html.ActionLink("Details", "Details", new { id = item.TeamID })
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="team" id="createBox">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "createButton" })
+    </div>
+
+</div>

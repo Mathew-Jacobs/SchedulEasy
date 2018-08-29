@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static SchedulEasy.Models.Calendar.CalendarModelSimple;
 using static SchedulEasy.Models.CalendarModel;
 
 namespace SchedulEasy.Services
@@ -37,7 +38,7 @@ namespace SchedulEasy.Services
             };
 
             List<DateTime> dt = new List<DateTime>();
-            //List<DateTime> bd = GetBusies();
+            List<BusyData> bd = GetBusies();
             dt = GetDates(year, month);
             
 
@@ -54,8 +55,8 @@ namespace SchedulEasy.Services
                             dtDay = day.Day
                         };
                         dy1.daycolumn = GetDateInfo(dy1.Date);
-                        dy1.BusyLevel = GetBusyLevel(day);
-                        dy1.BusyDayID = GetDescription(day);
+                        dy1.BusyLevel = GetBusyLevel(day, bd);
+                        dy1.BusyDayID = GetDescription(day, bd);
                         weeks.Week1.Add(dy1);
                         break;
                     case 2:
@@ -67,8 +68,8 @@ namespace SchedulEasy.Services
                             dtDay = day.Day
                         };
                         dy2.daycolumn = GetDateInfo(dy2.Date);
-                        dy2.BusyLevel = GetBusyLevel(day);
-                        dy2.BusyDayID = GetDescription(day);
+                        dy2.BusyLevel = GetBusyLevel(day, bd);
+                        dy2.BusyDayID = GetDescription(day, bd);
                         weeks.Week2.Add(dy2);
                         break;
                     case 3:
@@ -80,8 +81,8 @@ namespace SchedulEasy.Services
                             dtDay = day.Day
                         };
                         dy3.daycolumn = GetDateInfo(dy3.Date);
-                        dy3.BusyLevel = GetBusyLevel(day);
-                        dy3.BusyDayID = GetDescription(day);
+                        dy3.BusyLevel = GetBusyLevel(day, bd);
+                        dy3.BusyDayID = GetDescription(day, bd);
                         weeks.Week3.Add(dy3);
                         break;
                     case 4:
@@ -93,8 +94,8 @@ namespace SchedulEasy.Services
                             dtDay = day.Day
                         };
                         dy4.daycolumn = GetDateInfo(dy4.Date);
-                        dy4.BusyLevel = GetBusyLevel(day);
-                        dy4.BusyDayID = GetDescription(day);
+                        dy4.BusyLevel = GetBusyLevel(day, bd);
+                        dy4.BusyDayID = GetDescription(day, bd);
                         weeks.Week4.Add(dy4);
                         break;
                     case 5:
@@ -106,8 +107,8 @@ namespace SchedulEasy.Services
                             dtDay = day.Day
                         };
                         dy5.daycolumn = GetDateInfo(dy5.Date);
-                        dy5.BusyLevel = GetBusyLevel(day);
-                        dy5.BusyDayID = GetDescription(day);
+                        dy5.BusyLevel = GetBusyLevel(day, bd);
+                        dy5.BusyDayID = GetDescription(day, bd);
                         weeks.Week5.Add(dy5);
                         break;
                     case 6:
@@ -119,8 +120,8 @@ namespace SchedulEasy.Services
                             dtDay = day.Day
                         };
                         dy6.daycolumn = GetDateInfo(dy6.Date);
-                        dy6.BusyLevel = GetBusyLevel(day);
-                        dy6.BusyDayID = GetDescription(day);
+                        dy6.BusyLevel = GetBusyLevel(day, bd);
+                        dy6.BusyDayID = GetDescription(day, bd);
                         weeks.Week6.Add(dy6);
                         break;
                 };
@@ -155,6 +156,110 @@ namespace SchedulEasy.Services
             }
 
             return weeks;
+        }
+
+        public YearCalendar GetYearCalendar()
+        {
+            List<BusyData> bd = GetBusies();
+            List<WeekForMonthSimple> months = new List<WeekForMonthSimple>();
+            for (int i = 1; i <= 12; i++)
+            {
+                WeekForMonthSimple weeks = new WeekForMonthSimple
+                {
+                    MonthInfo = new DateTime(2018,i,1),
+                    Week1 = new List<DaySimple>(),
+                    Week2 = new List<DaySimple>(),
+                    Week3 = new List<DaySimple>(),
+                    Week4 = new List<DaySimple>(),
+                    Week5 = new List<DaySimple>(),
+                    Week6 = new List<DaySimple>()
+                };
+
+                List<DateTime> dt = new List<DateTime>();
+                //List<DateTime> bd = GetBusies();
+                dt = GetDates(DateTime.Now.Year, i);
+
+
+                foreach (DateTime day in dt)
+                {
+                    switch (GetWeekOfMonth(day))
+                    {
+                        case 1:
+                            DaySimple dy1 = new DaySimple
+                            {
+                                Date = day,
+                                dateStr = day.ToString("MM/dd/yyyy"),
+                            };
+                            dy1.daycolumn = GetDateInfo(dy1.Date);
+                            dy1.BusyLevel = GetBusyLevel(day, bd);
+                            weeks.Week1.Add(dy1);
+                            break;
+                        case 2:
+                            DaySimple dy2 = new DaySimple
+                            {
+                                Date = day,
+                                dateStr = day.ToString("MM/dd/yyyy"),
+                            };
+                            dy2.daycolumn = GetDateInfo(dy2.Date);
+                            dy2.BusyLevel = GetBusyLevel(day, bd);
+                            weeks.Week2.Add(dy2);
+                            break;
+                        case 3:
+                            DaySimple dy3 = new DaySimple
+                            {
+                                Date = day,
+                                dateStr = day.ToString("MM/dd/yyyy"),
+                            };
+                            dy3.daycolumn = GetDateInfo(dy3.Date);
+                            dy3.BusyLevel = GetBusyLevel(day, bd);
+                            weeks.Week3.Add(dy3);
+                            break;
+                        case 4:
+                            DaySimple dy4 = new DaySimple
+                            {
+                                Date = day,
+                                dateStr = day.ToString("MM/dd/yyyy"),
+                            };
+                            dy4.daycolumn = GetDateInfo(dy4.Date);
+                            dy4.BusyLevel = GetBusyLevel(day, bd);
+                            weeks.Week4.Add(dy4);
+                            break;
+                        case 5:
+                            DaySimple dy5 = new DaySimple
+                            {
+                                Date = day,
+                                dateStr = day.ToString("MM/dd/yyyy"),
+                            };
+                            dy5.daycolumn = GetDateInfo(dy5.Date);
+                            dy5.BusyLevel = GetBusyLevel(day, bd);
+                            weeks.Week5.Add(dy5);
+                            break;
+                        case 6:
+                            DaySimple dy6 = new DaySimple
+                            {
+                                Date = day,
+                                dateStr = day.ToString("MM/dd/yyyy"),
+                            };
+                            dy6.daycolumn = GetDateInfo(dy6.Date);
+                            dy6.BusyLevel = GetBusyLevel(day, bd);
+                            weeks.Week6.Add(dy6);
+                            break;
+                    };
+                }
+
+                while (weeks.Week1.Count < 7)
+                {
+                    DaySimple dy = null;
+                    weeks.Week1.Insert(0, dy);
+                }
+
+                months.Add(weeks);
+            }
+            var yearCal = new YearCalendar
+            {
+                weeks = months
+            };
+            return yearCal;
         }
 
         public static List<DateTime> GetDates(int year, int month)
@@ -253,12 +358,11 @@ namespace SchedulEasy.Services
             }
         }
 
-        public string GetBusyLevel(DateTime date)
+        public string GetBusyLevel(DateTime date, List<BusyData> busies)
         {
-            var dates = GetBusies();
             var colors = GetColorGradient(1);
             int busyLevel = 0;
-            foreach (var day in dates)
+            foreach (var day in busies)
             {
                 if (day.Day == date)
                 {
@@ -332,14 +436,13 @@ namespace SchedulEasy.Services
             return colors;
         }
 
-        public List<DescAndID> GetDescription(DateTime date)
+        public List<DescAndID> GetDescription(DateTime date, List<BusyData> busies)
         {
             List<DescAndID> list = new List<DescAndID>();
             
-            var dateData = GetBusies();
             var dates = new List<DateTime>();
 
-            foreach (var item in dateData)
+            foreach (var item in busies)
             {
                 dates.Add(item.Day);
             }
@@ -350,7 +453,7 @@ namespace SchedulEasy.Services
                 {
                     if (date >= day.Busy && date <= day.BusyEnd && day.UserID == _userID)
                     {
-                        foreach (var data in dateData)
+                        foreach (var data in busies)
                         {
                             if (date == data.Day && !list.Contains(new DescAndID { Description = data.Description, ID = day.BusyDayID }))
                             {
@@ -370,12 +473,11 @@ namespace SchedulEasy.Services
             }
         }
 
-        public List<int> GetBusyDayID(DateTime date)
+        public List<int> GetBusyDayID(DateTime date, List<BusyData> busies)
         {
-            var dateData = GetBusies();
             var dates = new List<DateTime>();
 
-            foreach (var item in dateData)
+            foreach (var item in busies)
             {
                 dates.Add(item.Day);
             }
