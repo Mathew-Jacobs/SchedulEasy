@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SchedulEasy.Models.TeamListItem>
+﻿@model SchedulEasy.Models.Team.TeamListComplete
 
 @{
     ViewBag.Title = "Index";
@@ -6,21 +6,57 @@
 
 <h2>My Groups</h2>
 
-@using (Html.BeginForm())
-{
+<div style="display:flex">
+    @using (Html.BeginForm())
+    {
+        <p>
+            Search: <input class="searchBox" id="searchString" name="searchString" type="text" value="">
+            <input type="submit" value="Search" />
+        </p>
+    }
+
     <p>
-        Search: <input class="searchBox" id="searchString" name="searchString" type="text" value="">
-        <input type="submit" value="Search" />
+        <a class="createButton" href="/Team/Create">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
     </p>
+</div>
+
+@if (Model.PendingTeams.Count() > 0)
+{
+    <h3>Pending</h3>
+    <div class="teamWrapper pending">
+        @foreach (var item in Model.PendingTeams)
+        {
+            <div class="team">
+                <div class="titleRow">
+                    <div class="title">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </div>
+                    <div class="owner">
+                        @Html.DisplayFor(modelItem => item.OwnerName)
+                    </div>
+                </div>
+                <div class="descriptionBox">
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </p>
+                </div>
+                <a href="/TeamData/Edit/@User.Identity.Name?teamID=@item.TeamID" style="float: right; bottom: -30px; position: relative;">
+                    Join Group <span class="glyphicon glyphicon-ok"></span>
+                </a>
+                <div class="detailBox">
+                    <div class="detailContent">
+                        @Html.ActionLink("Details", "Details", new { id = item.TeamID })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <h3>Joined</h3>
 }
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <div class="teamWrapper">
-
-    @foreach (var item in Model)
+    @foreach (var item in Model.JoinedTeams)
     {
         <div class="team">
             <div class="titleRow">
@@ -37,9 +73,13 @@
                 </p>
                 @if (item.OwnerName == User.Identity.Name)
                 {
-                    <div>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.TeamID })<text> |</text>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.TeamID })
+                    <div style="margin-top:5px">
+                        <a href="/Team/Edit/@item.TeamID" style="color:black; text-decoration:none; margin: 4px;">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                        <a href="/Team/Delete/@item.TeamID" style="color:rgb(161,5,0); text-decoration:none; margin: 4px;">
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </a>
                     </div>
                 }
             </div>
@@ -57,9 +97,5 @@
             </div>
         </div>
     }
-
-    <div class="team" id="createBox">
-        @Html.ActionLink("Create New", "Create", null, new { @class = "createButton" })
-    </div>
 
 </div>

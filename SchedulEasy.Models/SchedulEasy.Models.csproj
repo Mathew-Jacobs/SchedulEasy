@@ -84,6 +84,7 @@
     <Compile Include="TeamData\TeamDataEdit.cs" />
     <Compile Include="Team\TeamDetail.cs" />
     <Compile Include="Team\TeamEdit.cs" />
+    <Compile Include="Team\TeamListComplete.cs" />
     <Compile Include="Team\TeamListItem.cs" />
   </ItemGroup>
   <ItemGroup>

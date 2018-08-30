@@ -20,7 +20,10 @@ namespace SchedulEasy.WebMVC.Controllers
             var model = service.ConvertIDToUserName(service.GetTeams());
             if (!String.IsNullOrEmpty(searchString))
             {
-                model = model.Where(s => s.Title.ToLower().Contains(searchString.ToLower())
+                model.JoinedTeams = model.JoinedTeams.Where(s => s.Title.ToLower().Contains(searchString.ToLower())
+                                      || s.OwnerName.ToLower().Contains(searchString.ToLower()));
+
+                model.PendingTeams = model.PendingTeams.Where(s => s.Title.ToLower().Contains(searchString.ToLower())
                                       || s.OwnerName.ToLower().Contains(searchString.ToLower()));
             }
             return View(model);

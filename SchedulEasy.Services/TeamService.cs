@@ -1,6 +1,7 @@
 ﻿using SchedulEasy.Contracts;
 using SchedulEasy.Data;
 using SchedulEasy.Models;
+using SchedulEasy.Models.Team;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,22 +62,31 @@ namespace SchedulEasy.Services
             }
         }
 
-        public IEnumerable<TeamListItem> GetTeams()
+        public TeamListComplete GetTeams()
         {
-            List<int> data = new List<int>();
+            List<int> dataJoined = new List<int>();
+            List<int> dataPending = new List<int>();
             using (var ctx = new ApplicationDbContext())
             {
                 foreach (var item in ctx.TeamsData)
                 {
-                    if ( item.UserID == _userID )
+                    if ( item.UserID == _userID)
                     {
-                        data.Add(item.TeamID);
+                        if (item.Private == false)
+                        {
+                            dataJoined.Add(item.TeamID);
+                        }
+                        else
+                        {
+                            dataPending.Add(item.TeamID);
+                        }
+
                     }
                 }
-                var query =
+                var joinedquery =
                     ctx
                         .Teams
-                        .Where(e => e.OwnerID == _userID || data.Contains(e.TeamID))
+                        .Where(e => e.OwnerID == _userID || dataJoined.Contains(e.TeamID))
                         .Select(
                         e =>
                             new TeamListItem
@@ -87,7 +97,29 @@ namespace SchedulEasy.Services
                                 OwnerName = e.OwnerID
                             }
                         );
-                return query.ToArray();
+                var pendingquery =
+                    ctx
+                        .Teams
+                        .Where(e => dataPending.Contains(e.TeamID))
+                        .Select(
+                        e =>
+                            new TeamListItem
+                            {
+                                TeamID = e.TeamID,
+                                Title = e.Title,
+                                Description = e.Description,
+                                OwnerName = e.OwnerID
+                            }
+                        );
+                var Joined = joinedquery.ToArray();
+                var Pending = pendingquery.ToArray();
+                var ret = new TeamListComplete
+                {
+                    JoinedTeams = Joined,
+                    PendingTeams = Pending
+                };
+
+                return ret;
             }
         }
 
@@ -247,11 +279,21 @@ namespace SchedulEasy.Services
             }
         }
 
-        public IEnumerable<TeamListItem> ConvertIDToUserName(IEnumerable<TeamListItem> listItems)
+        public TeamListComplete ConvertIDToUserName(TeamListComplete listItems)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                foreach (var listItem in listItems)
+                foreach (var listItem in listItems.JoinedTeams)
+                {
+                    foreach (var item in ctx.Users)
+                    {
+                        if (item.Id == listItem.OwnerName)
+                        {
+                            listItem.OwnerName = item.UserName;
+                        }
+                    }
+                }
+                foreach (var listItem in listItems.PendingTeams)
                 {
                     foreach (var item in ctx.Users)
                     {

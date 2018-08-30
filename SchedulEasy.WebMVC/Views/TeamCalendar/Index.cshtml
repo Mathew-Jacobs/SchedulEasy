@@ -3,386 +3,394 @@
 
     <div id="component-header">
         <div id="@Model.prevMonth"
-             class="prevMonth" style="float:left;margin-left:10px;">@Html.ActionLink("Prev", "Index", "Calendar", new { month = Model.prevMonth, year = Model.prevYear, teamID = Model.TeamID }, null)</div>
-            @Model.Week3[0].Date.ToString("MMMM") @Model.Week3[0].Date.Year
-            <div id="@Model.nextMonth"
-                 class="nextMonth" style="float:right; margin-right:10px;">@Html.ActionLink("Next", "Index", "Calendar", new { month = Model.nextMonth, year = Model.nextYear, teamID = Model.TeamID, @style = "float:right; margin-right:10px;" }, null)</div>
-            </div>
-
-            <div>
-                <table id="component-table">
-                    <thead>
-                        <tr>
-                            <th>
-                                Sun
-                            </th>
-                            <th>
-                                Mon
-                            </th>
-                            <th>
-                                Tue
-                            </th>
-                            <th>
-                                Wed
-                            </th>
-                            <th>
-                                Thr
-                            </th>
-                            <th>
-                                Fri
-                            </th>
-                            <th>
-                                Sat
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="week" id="week1">
-                            @foreach (var item in Model.Week1)
-                            {
-                                if (item != null)
-                                {
-                                    if (item.daycolumn == 0 || item.daycolumn == 6)
-                                    {
-                                        <td class="weekend">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else if (item.Date != DateTime.Today)
-                                    {
-                                        <td>
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td class="selected">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                }
-                                else
-                                {
-                                    <td style="background-color:lightgray"></td>
-                                }
-                            }
-                        </tr>
-                        <tr class="week" id="week2">
-                            @foreach (var item in Model.Week2)
-                            {
-                                if (item != null)
-                                {
-                                    if (item.daycolumn == 0 || item.daycolumn == 6)
-                                    {
-                                        <td class="weekend">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else if (item.Date != DateTime.Today)
-                                    {
-                                        <td>
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td class="selected">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                }
-                                else
-                                {
-                                    <td style="background-color:lightgray"></td>
-                                }
-                            }
-                        </tr>
-                        <tr class="week" id="week3">
-                            @foreach (var item in Model.Week3)
-                            {
-                                if (item != null)
-                                {
-                                    if (item.daycolumn == 0 || item.daycolumn == 6)
-                                    {
-                                        <td class="weekend">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else if (item.Date != DateTime.Today)
-                                    {
-                                        <td>
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td class="selected">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                }
-                                else
-                                {
-                                    <td style="background-color:lightgray"></td>
-                                }
-                            }
-                        </tr>
-                        <tr class="week" id="week4">
-                            @foreach (var item in Model.Week4)
-                            {
-                                if (item != null)
-                                {
-                                    if (item.daycolumn == 0 || item.daycolumn == 6)
-                                    {
-                                        <td class="weekend">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else if (item.Date != DateTime.Today)
-                                    {
-                                        <td>
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td class="selected">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                }
-                                else
-                                {
-                                    <td style="background-color:lightgray"></td>
-                                }
-                            }
-                        </tr>
-                        <tr class="week" id="week5">
-                            @foreach (var item in Model.Week5)
-                            {
-                                if (item != null)
-                                {
-                                    if (item.daycolumn == 0 || item.daycolumn == 6)
-                                    {
-                                        <td class="weekend">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else if (item.Date != DateTime.Today)
-                                    {
-                                        <td>
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td class="selected">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                }
-                                else
-                                {
-                                    <td style="background-color:lightgray"></td>
-                                }
-                            }
-                        </tr>
-                        <tr class="week" id="week6">
-                            @foreach (var item in Model.Week6)
-                            {
-                                if (item != null)
-                                {
-                                    if (item.daycolumn == 0 || item.daycolumn == 6)
-                                    {
-                                        <td class="weekend">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else if (item.Date != DateTime.Today)
-                                    {
-                                        <td>
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                    else
-                                    {
-                                        <td class="selected">
-                                            <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                            <div id="@item.dateStr" class="dt">
-                                                @item.dtDay
-                                                <ul class="Descriptions">
-                                                    @foreach (var desc in item.BusyDayID)
-                                                    {
-                                                        <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    }
-                                }
-                                else
-                                {
-                                    <td style="background-color:lightgray"></td>
-                                }
-                            }
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+             class="prevMonth" style="float:left;margin-left:10px;">
+            <a href="/TeamCalendar?month=@Model.prevMonth&amp;year=@Model.prevYear&amp;teamID=@Model.TeamID">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
         </div>
+        @Model.Week3[0].Date.ToString("MMMM") @Model.Week3[0].Date.Year
+        <div id="@Model.nextMonth"
+             class="nextMonth" style="float:right; margin-right:10px;">
+            <a href="/TeamCalendar?month=@Model.nextMonth&amp;year=@Model.nextYear&amp;teamID=@Model.TeamID">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+
+    <div>
+        <table id="component-table">
+            <thead>
+                <tr>
+                    <th>
+                        Sun
+                    </th>
+                    <th>
+                        Mon
+                    </th>
+                    <th>
+                        Tue
+                    </th>
+                    <th>
+                        Wed
+                    </th>
+                    <th>
+                        Thr
+                    </th>
+                    <th>
+                        Fri
+                    </th>
+                    <th>
+                        Sat
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="week" id="week1">
+                    @foreach (var item in Model.Week1)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td style="background-color:transparent"></td>
+                        }
+                    }
+                </tr>
+                <tr class="week" id="week2">
+                    @foreach (var item in Model.Week2)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td style="background-color:transparent"></td>
+                        }
+                    }
+                </tr>
+                <tr class="week" id="week3">
+                    @foreach (var item in Model.Week3)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td style="background-color:transparent"></td>
+                        }
+                    }
+                </tr>
+                <tr class="week" id="week4">
+                    @foreach (var item in Model.Week4)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td style="background-color:transparent"></td>
+                        }
+                    }
+                </tr>
+                <tr class="week" id="week5">
+                    @foreach (var item in Model.Week5)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td style="background-color:transparent"></td>
+                        }
+                    }
+                </tr>
+                <tr class="week" id="week6">
+                    @foreach (var item in Model.Week6)
+                    {
+                        if (item != null)
+                        {
+                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                            {
+                                <td class="weekend">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else if (item.Date != DateTime.Today)
+                            {
+                                <td>
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="selected">
+                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                    <div id="@item.dateStr" class="dt">
+                                        @item.dtDay
+                                        <ul class="Descriptions">
+                                            @foreach (var desc in item.BusyDayID)
+                                            {
+                                                <li class="descList">@Html.ActionLink(desc.Description, "Details", "BusyDay", new { id = desc.ID, teamID = Model.TeamID }, null)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </td>
+                            }
+                        }
+                        else
+                        {
+                            <td style="background-color:transparent"></td>
+                        }
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 

@@ -40,7 +40,7 @@ textarea {
 }
 
 .mainCal {
-    width:60%;
+    width: 80%;
     margin: 0 auto;
 }
 
@@ -69,17 +69,15 @@ textarea {
 #component-table {
     width: 90%;
     margin: 0 auto;
-    background-color: #999999;
 }
 
 #component-table td,
 #component-table th {
     width: 14.29%;
     position: relative;
-    color: white;
     text-align: center;
     overflow: hidden;
-    border:1px solid white;
+    border:1px solid black;
     background-color: transparent;
     border-collapse: collapse;
 }
@@ -94,7 +92,7 @@ textarea {
     position: absolute;
     padding: 2px 5px;
     text-decoration: none;
-    top: 0;
+    top: 20%;
     bottom: 0;
     left: 0;
     right: 0;
@@ -103,9 +101,12 @@ textarea {
     z-index: 2;
 }
 
+#yearCover.busyCover {
+    top: 0;
+}
+
 .dt {
     position: absolute;
-    color: white;
     text-decoration: none;
     text-align: left;
     padding: 2px 5px;
@@ -116,8 +117,8 @@ textarea {
     z-index: 2;
 }
 
-.selected .busyCover {
-    border: 3px solid black;
+.selected .dt {
+    border: 2px solid black;
 }
 
 .Descriptions {
@@ -171,12 +172,10 @@ textarea {
 
 .newBusy {
     text-decoration: none;
-    color: transparent;
+    color:black;
     width: 18%;
     height: 18%;
     text-align:center;
-    background: url(../Content/Assets/PlusIcon_Plus.svg) no-repeat top left;
-    margin:1% auto;
     float: right;
     visibility: hidden;
     font-size: 15px;
@@ -185,7 +184,7 @@ textarea {
 
 .newBusy:hover {
     text-decoration: none;
-    color: transparent;
+    color: black;
 }
 
 .dt:hover .newBusy {
@@ -242,8 +241,11 @@ textarea {
     flex-wrap: wrap;
 }
 
+.pending {
+    border-bottom: 1px solid black;
+}
+
 .team {
-    background-color: lightgrey;
     margin: 10px;
     padding: 8px;
     border: 2px solid black;
@@ -280,14 +282,12 @@ textarea {
 }
 
 .createButton {
-    background: url(../Content/Assets/PlusIcon_Plus.svg) no-repeat top left;
     display: block;
-    width: 75px;
-    height: 75px;
-    text-indent: -9999px;
-    border-radius: 50%;
-    background-color: lightgray;
-    border: 2px solid black;
+    text-align:center;
+    color: black;
+    font-size: medium;
+    margin: 3px;
+    padding-left: 10px;
 }
 
 #createBox {
@@ -311,18 +311,20 @@ textarea {
     bottom: 0;
     left: 0;
     right: 0;
+    background-color: rgba(0,0,0,0.2);
     font-size: 1vw;
     text-align: center;
-    margin-top: 20%;
+    margin-top: 15%;
+    margin-bottom: 15%;
     z-index: 3;
 }
 
 .monthLink {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .monthLink:hover {
     text-decoration: none;
-    color: white;
+    color: black;
 }

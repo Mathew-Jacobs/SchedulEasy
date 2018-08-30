@@ -12,9 +12,7 @@ namespace SchedulEasy.WebMVC.Controllers
     {
         public ActionResult Index()
         {
-            var svc = CreateCalendarService();
-            var model = svc.GetYearCalendar();
-            return View(model);
+            return View();
         }
 
         public ActionResult About()
@@ -29,13 +27,6 @@ namespace SchedulEasy.WebMVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
-        }
-
-        private CalendarService CreateCalendarService()
-        {
-            var userID = User.Identity.GetUserId();
-            var service = new CalendarService(userID);
-            return service;
         }
     }
 }

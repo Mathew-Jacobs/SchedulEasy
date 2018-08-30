@@ -380,17 +380,25 @@ namespace SchedulEasy.Services
 
         public List<Color> GetColorGradient(int stepNumber)
         {
-            int redStart = 110;
-            int greenStart = 110;
-            int blueStart = 110;
+            int redStart = 148;
+            int greenStart = 255;
+            int blueStart = 127;
 
-            int redEnd = 173;
-            int greenEnd = 3;
-            int blueEnd = 3;
+            int redMid = 255;
+            int greenMid = 255;
+            int blueMid = 100;
 
-            int redStep = Convert.ToInt32(Math.Ceiling((redEnd - redStart) / (stepNumber + 1m)));
-            int greenStep = Convert.ToInt32(Math.Ceiling((greenEnd - greenStart) / (stepNumber + 1m)));
-            int blueStep = Convert.ToInt32(Math.Ceiling((blueEnd - blueStart) / (stepNumber + 1m)));
+            int redEnd = 178;
+            int greenEnd = 57;
+            int blueEnd = 59;
+
+            int redStep1 = Convert.ToInt32(Math.Ceiling((redMid - redStart) / (stepNumber + 1m)));
+            int greenStep1 = Convert.ToInt32(Math.Ceiling((greenMid - greenStart) / (stepNumber + 1m)));
+            int blueStep1 = Convert.ToInt32(Math.Ceiling((blueEnd - blueStart) / (stepNumber + 1m)));
+
+            int redStep2 = Convert.ToInt32(Math.Ceiling((redEnd - redMid) / (stepNumber + 1m)));
+            int greenStep2 = Convert.ToInt32(Math.Ceiling((greenEnd - greenMid) / (stepNumber + 1m)));
+            int blueStep2 = Convert.ToInt32(Math.Ceiling((blueEnd - blueMid) / (stepNumber + 1m)));
 
             int red = redStart;
             int green = greenStart;
@@ -400,13 +408,26 @@ namespace SchedulEasy.Services
             Color color = Color.FromArgb(1, redStart, greenStart, blueStart);
             colors.Add(color);
 
+            while (red != redMid)
+            {
+                red += redStep1;
+                green += greenStep1;
+                blue += blueStep1;
+
+                if (red > redMid) { red = redMid; }
+                if (green > greenMid) { green = greenMid; }
+                if (blue < blueMid) { blue = blueMid; }
+
+                colors.Add(Color.FromArgb(1, red, green, blue));
+            }
+
             while (red != redEnd)
             {
-                red += redStep;
-                green += greenStep;
-                blue += blueStep;
+                red += redStep2;
+                green += greenStep2;
+                blue += blueStep2;
 
-                if (red > redEnd) { red = redEnd; }
+                if (red < redEnd) { red = redEnd; }
                 if (green < greenEnd) { green = greenEnd; }
                 if (blue < blueEnd) { blue = blueEnd; }
 

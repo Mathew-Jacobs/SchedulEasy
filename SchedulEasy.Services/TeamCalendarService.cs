@@ -260,7 +260,7 @@ namespace SchedulEasy.Services
         {
             List<string> userIDs = GetTeamMembers(teamID);
             var dates = GetBusies(teamID);
-            var colors = GetColorGradient(userIDs.Count);
+            var colors = GetColorGradient((userIDs.Count/2));
             int busyLevel = 0;
             foreach (var day in dates)
             {

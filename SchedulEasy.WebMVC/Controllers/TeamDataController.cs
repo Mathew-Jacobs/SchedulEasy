@@ -69,7 +69,7 @@ namespace SchedulEasy.WebMVC.Controllers
             var model = svc.GetMemberByID(id, teamID);
             var own = svc.GetTeamByID(teamID);
 
-            if (own.OwnerName != User.Identity.Name && User.Identity.GetUserId() != id)
+            if (own.OwnerName != User.Identity.Name && User.Identity.Name != id)
             {
                 return RedirectToAction("Index", "Team");
             }

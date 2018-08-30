@@ -19,8 +19,7 @@ namespace SchedulEasy.WebMVC.Controllers
             var service = CreateCalendarService();
             if (month == null || year == null)
             {
-                var model = service.GetCalendar(DateTime.Now.Month, DateTime.Now.Year);
-                return View(model);
+                return RedirectToAction("Index", "YearCalendar");
             }
             else
             {
