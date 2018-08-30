@@ -47,7 +47,7 @@ textarea {
 .mainCal .year {
     padding: 10px 0 0 20px;
     font-size: 2em;
-    color: rgb(178, 57, 59);
+    color: rgb(173, 3, 3);
 }
 
 #calendarTable {
@@ -69,17 +69,18 @@ textarea {
 #component-table {
     width: 90%;
     margin: 0 auto;
-    background-color: lightgray;
+    background-color: #999999;
 }
 
 #component-table td,
 #component-table th {
     width: 14.29%;
     position: relative;
+    color: white;
     text-align: center;
     overflow: hidden;
     border:1px solid white;
-    background-color: lightgray;
+    background-color: transparent;
     border-collapse: collapse;
 }
 
@@ -98,12 +99,13 @@ textarea {
     left: 0;
     right: 0;
     text-align: left;
+    
     z-index: 2;
 }
 
 .dt {
     position: absolute;
-    color: black;
+    color: white;
     text-decoration: none;
     text-align: left;
     padding: 2px 5px;
@@ -111,11 +113,11 @@ textarea {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index:2;
+    z-index: 2;
 }
 
-.selected .busyCover{
-    border: 2px solid black;
+.selected .busyCover {
+    border: 3px solid black;
 }
 
 .Descriptions {
@@ -317,8 +319,10 @@ textarea {
 
 .monthLink {
     text-decoration: none;
+    color: white;
 }
 
 .monthLink:hover {
     text-decoration: none;
+    color: white;
 }

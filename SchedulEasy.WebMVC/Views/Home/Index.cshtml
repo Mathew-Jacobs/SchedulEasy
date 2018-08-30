@@ -17,635 +17,642 @@
             {
                 <tr>
                     <td>
-                        <table id="component-table">
-                            <thead>
-                                <tr>
-                                    <th colspan="7" style="background-color:transparent"><a class="monthLink" href="/Calendar?month=@Model.weeks[i].MonthInfo.Month&amp;year=2018">@Model.weeks[i].MonthInfo.ToString("MMM")</a></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="week" id="week1">
-                                    @foreach (var item in Model.weeks[i].Week1)
-                                    {
-                                        if (item != null)
+                        <a class="monthLink" href="/Calendar?month=@Model.weeks[i].MonthInfo.Month&amp;year=2018">
+                            <table id="component-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="7" style="background-color:transparent">@Model.weeks[i].MonthInfo.ToString("MMM")</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="week" id="week1">
+                                        @foreach (var item in Model.weeks[i].Week1)
                                         {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week2">
+                                        @foreach (var item in Model.weeks[i].Week2)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week2">
-                                    @foreach (var item in Model.weeks[i].Week2)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week3">
+                                        @foreach (var item in Model.weeks[i].Week3)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week3">
-                                    @foreach (var item in Model.weeks[i].Week3)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week4">
+                                        @foreach (var item in Model.weeks[i].Week4)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week4">
-                                    @foreach (var item in Model.weeks[i].Week4)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week5">
+                                        @foreach (var item in Model.weeks[i].Week5)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week5">
-                                    @foreach (var item in Model.weeks[i].Week5)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week6">
+                                        @foreach (var item in Model.weeks[i].Week6)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week6">
-                                    @foreach (var item in Model.weeks[i].Week6)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
-                                        {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
                     </td>
                     <td>
-                        <table id="component-table">
-                            <thead>
-                                <tr>
-                                    <th colspan="7" style="background-color:transparent"><a href="/Calendar?month=@Model.weeks[i+1].MonthInfo.Month&amp;year=2018">@Model.weeks[i + 1].MonthInfo.ToString("MMM")</a></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="week" id="week1">
-                                    @foreach (var item in Model.weeks[i + 1].Week1)
-                                    {
-                                        if (item != null)
+                        <a class="monthLink" href="/Calendar?month=@Model.weeks[i+1].MonthInfo.Month&amp;year=2018">
+                            <table id="component-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="7" style="background-color:transparent">
+                                            @Model.weeks[i + 1].MonthInfo.ToString("MMM")
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="week" id="week1">
+                                        @foreach (var item in Model.weeks[i + 1].Week1)
                                         {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week2">
+                                        @foreach (var item in Model.weeks[i + 1].Week2)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week2">
-                                    @foreach (var item in Model.weeks[i + 1].Week2)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week3">
+                                        @foreach (var item in Model.weeks[i + 1].Week3)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week3">
-                                    @foreach (var item in Model.weeks[i + 1].Week3)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week4">
+                                        @foreach (var item in Model.weeks[i + 1].Week4)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week4">
-                                    @foreach (var item in Model.weeks[i + 1].Week4)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week5">
+                                        @foreach (var item in Model.weeks[i + 1].Week5)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week5">
-                                    @foreach (var item in Model.weeks[i + 1].Week5)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week6">
+                                        @foreach (var item in Model.weeks[i + 1].Week6)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week6">
-                                    @foreach (var item in Model.weeks[i + 1].Week6)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
-                                        {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
                     </td>
                     <td>
-                        <table id="component-table">
-                            <thead>
-                                <tr>
-                                    <th colspan="7" style="background-color:transparent">
-                                        <a href="/Calendar?month=@Model.weeks[i+2].MonthInfo.Month&amp;year=2018">
+                        <a class="monthLink" href="/Calendar?month=@Model.weeks[i+2].MonthInfo.Month&amp;year=2018">
+                            <table id="component-table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="7" style="background-color:transparent">
                                             @Model.weeks[i + 2].MonthInfo.ToString("MMM")
-                                        </a>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="week" id="week1">
-                                    @foreach (var item in Model.weeks[i + 2].Week1)
-                                    {
-                                        if (item != null)
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="week" id="week1">
+                                        @foreach (var item in Model.weeks[i + 2].Week1)
                                         {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week2">
+                                        @foreach (var item in Model.weeks[i + 2].Week2)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week2">
-                                    @foreach (var item in Model.weeks[i + 2].Week2)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week3">
+                                        @foreach (var item in Model.weeks[i + 2].Week3)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week3">
-                                    @foreach (var item in Model.weeks[i + 2].Week3)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week4">
+                                        @foreach (var item in Model.weeks[i + 2].Week4)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week4">
-                                    @foreach (var item in Model.weeks[i + 2].Week4)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week5">
+                                        @foreach (var item in Model.weeks[i + 2].Week5)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week5">
-                                    @foreach (var item in Model.weeks[i + 2].Week5)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
+                                    </tr>
+                                    <tr class="week" id="week6">
+                                        @foreach (var item in Model.weeks[i + 2].Week6)
                                         {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                                <tr class="week" id="week6">
-                                    @foreach (var item in Model.weeks[i + 2].Week6)
-                                    {
-                                        if (item != null)
-                                        {
-                                            if (item.daycolumn == 0 || item.daycolumn == 6)
+                                            if (item != null)
                                             {
-                                                <td class="weekend">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
-                                            }
-                                            else if (item.Date != DateTime.Today)
-                                            {
-                                                <td>
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                {
+                                                    <td class="weekend">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else if (item.Date != DateTime.Today)
+                                                {
+                                                    <td>
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td class="selected">
+                                                        <div class="busyCover" style="background-color:@item.BusyLevel"></div>
+                                                        <div class="dayNum">@item.Date.Day</div>
+                                                    </td>
+                                                }
                                             }
                                             else
                                             {
-                                                <td class="selected">
-                                                    <div class="busyCover" style="background-color:@item.BusyLevel"></div>
-                                                    <div class="dayNum">@item.Date.Day</div>
-                                                </td>
+                                                <td style="background-color:transparent"></td>
                                             }
                                         }
-                                        else
-                                        {
-                                            <td style="background-color:transparent"></td>
-                                        }
-                                    }
-                                </tr>
-                            </tbody>
-                        </table>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
                     </td>
                 </tr>
             }
