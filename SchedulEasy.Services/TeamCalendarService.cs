@@ -217,9 +217,9 @@ namespace SchedulEasy.Services
                                 {
                                     Day = busyDay.AddDays(i),
                                     Description = busy.Description,
-                                    ID = busy.BusyDayID
+                                    ID = busy.BusyDayID,
+                                    UserName = busy.UserID                            
                                 };
-
                                 dateData.Add(data);
                             }
                         }
@@ -360,7 +360,8 @@ namespace SchedulEasy.Services
                                 DescAndID item = new DescAndID
                                 {
                                     Description = data.Description,
-                                    ID = data.ID
+                                    ID = data.ID,
+                                    UserName = GetUserName(data.UserName)
                                 };
                                 list.Add(item);
                             }
@@ -410,6 +411,22 @@ namespace SchedulEasy.Services
                     }
                 }
                 return false;
+            }
+        }
+
+        private string GetUserName(string ID)
+        {
+            string UserName = "ERROR";
+            using (var ctx = new ApplicationDbContext())
+            {
+                foreach (var item in ctx.Users)
+                {
+                    if (item.Id == ID)
+                    {
+                        UserName = item.UserName;
+                    }
+                }
+                return UserName;
             }
         }
     }

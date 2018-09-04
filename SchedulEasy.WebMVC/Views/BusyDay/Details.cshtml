@@ -4,60 +4,46 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<div class="container body-content">
+    <div class="contentBox">
+        <h2>@Html.DisplayFor(model => model.busyDayDetail.Description)</h2>
 
-<div>
-    <h4>BusyDayDetail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.busyDayDetail.BusyDayID)
-        </dt>
+        <div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Start
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.busyDayDetail.BusyDayID)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.busyDayDetail.Busy)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.busyDayDetail.Busy)
-        </dt>
+                <dt>
+                    End
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.busyDayDetail.Busy)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.busyDayDetail.BusyEnd)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.busyDayDetail.BusyEnd)
-        </dt>
+            </dl>
+        </div>
+        <p>
+            @if (Model.Authenticated)
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.busyDayDetail.BusyDayID }) <text> |</text>
+                @Html.ActionLink("Delete", "Delete", new { id = Model.busyDayDetail.BusyDayID }) <text> |</text>
+            }
+            @if (Model.TeamID != null)
+            {
+                @Html.ActionLink("Back to Calendar", "Index", "TeamCalendar", new { teamID = Model.TeamID }, null)
+            }
+            else
+            {
+                @Html.ActionLink("Back to Calendar", "Index", "Calendar")
+            }
 
-        <dd>
-            @Html.DisplayFor(model => model.busyDayDetail.BusyEnd)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.busyDayDetail.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.busyDayDetail.Description)
-        </dd>
-
-    </dl>
+        </p>
+    </div>
 </div>
-<p>
-    @if (Model.Authenticated)
-    {
-        @Html.ActionLink("Edit", "Edit", new { id = Model.busyDayDetail.BusyDayID }) <text> |</text>
-        @Html.ActionLink("Delete", "Delete", new { id = Model.busyDayDetail.BusyDayID }) <text> |</text>
-    }
-    @if (Model.TeamID != null)
-    {
-        @Html.ActionLink("Back to Calendar", "Index", "TeamCalendar", new { teamID = Model.TeamID }, null)
-    }
-    else
-    {
-        @Html.ActionLink("Back to Calendar", "Index", "Calendar")
-    }
-
-</p>

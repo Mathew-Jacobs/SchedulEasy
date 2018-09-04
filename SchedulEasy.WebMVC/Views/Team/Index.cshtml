@@ -9,12 +9,16 @@
     <div style="display:flex">
         @using (Html.BeginForm())
         {
-            <p>
-                <input class="searchBox" id="searchString" name="searchString" type="text" value="" placeholder="Search" style="padding-left: 3px;">
-                <button type="submit" class="btn btn-default" aria-label="Left Align">
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </p>
+            <div>
+                <div class="input-group" style="max-width: 320px;">
+                    <input class="searchBox form-control" id="searchString" name="searchString" type="text" value="" placeholder="Search" style="padding-left: 3px;">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default" aria-label="Left Align">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
         }
 
         <p>

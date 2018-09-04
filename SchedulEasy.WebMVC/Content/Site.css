@@ -45,7 +45,7 @@ textarea {
 
 .mainCal {
     width: 80%;
-    margin: 0 auto;
+    margin: 35px auto;
     background-color: white;
 }
 
@@ -59,7 +59,7 @@ textarea {
     width: 90%;
     background-color: white;
     padding-top: 1em;
-    margin: 0 auto;
+    margin: 35px auto;
 }
 
 #component-header {
@@ -343,6 +343,7 @@ textarea {
     left: 0;
     margin: 0 0 0 55%;
     background-color: white;
+    border: 3px solid black;
     border-radius: 10px;
     padding: 2em;
     text-align: center;
@@ -350,4 +351,25 @@ textarea {
 
 .SchedulEasy {
     background: url(../Content/Assets/Logo.svg) no-repeat top left;
+}
+
+.form-custom {
+    display: initial;
+}
+
+.body-content {
+    background-color: #007B7B;
+    margin-top: 35px;
+    padding: 1em;
+    min-height: 500px;
+}
+
+.contentBox {
+    margin: 30px auto;
+    width: 40%;
+    min-width: 400px;
+    text-align: center;
+    float: none;
+    background-color: white;
+    padding: 1em;
 }

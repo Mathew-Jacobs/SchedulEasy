@@ -11,5 +11,6 @@ namespace SchedulEasy.Models.Calendar
         public DateTime Day { get; set; }
         public string Description { get; set; }
         public int ID { get; set; }
+        public string UserName { get; set; }
     }
 }

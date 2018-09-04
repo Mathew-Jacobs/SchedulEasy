@@ -12,9 +12,11 @@ namespace SchedulEasy.Models
         [Required]
         [MinLength(3)]
         [MaxLength(100)]
+        [Display(Name = "Name")]
         public string Title { get; set; }
 
         [MaxLength(500)]
+        [Display(Name = "Info")]
         public string Description { get; set; }
     }
 }
