@@ -3,1037 +3,1038 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-<table class="mainCal">
-    <thead>
-        <tr>
-            <th colspan="3" class="year">@DateTime.Now.Year</th>
-        </tr>
-    </thead>
-    <tbody class="yearCal">
-        @for (int i = 0; i < Model.weeks.Count; i++)
-        {
-            if (i == 0 || i == 3 || i == 6 || i == 9)
+<div class="container body-content">
+    <table class="mainCal">
+        <thead>
+            <tr>
+                <th colspan="3" class="year">@DateTime.Now.Year</th>
+            </tr>
+        </thead>
+        <tbody class="yearCal">
+            @for (int i = 0; i < Model.weeks.Count; i++)
             {
-                <tr>
-                    <td>
-                        <a class="monthLink" href="/Calendar?month=@Model.weeks[i].MonthInfo.Month&amp;year=2018">
-                            <table id="component-table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="7" style="background-color:transparent">@Model.weeks[i].MonthInfo.ToString("MMM")</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="week" id="week1">
-                                        @foreach (var item in Model.weeks[i].Week1)
-                                        {
-                                            if (item != null)
+                if (i == 0 || i == 3 || i == 6 || i == 9)
+                {
+                    <tr>
+                        <td>
+                            <a class="monthLink" href="/Calendar?month=@Model.weeks[i].MonthInfo.Month&amp;year=2018">
+                                <table id="component-table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="7" style="background-color:transparent">@Model.weeks[i].MonthInfo.ToString("MMM")</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="week" id="week1">
+                                            @foreach (var item in Model.weeks[i].Week1)
                                             {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week2">
+                                            @foreach (var item in Model.weeks[i].Week2)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week2">
-                                        @foreach (var item in Model.weeks[i].Week2)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week3">
+                                            @foreach (var item in Model.weeks[i].Week3)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week3">
-                                        @foreach (var item in Model.weeks[i].Week3)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week4">
+                                            @foreach (var item in Model.weeks[i].Week4)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week4">
-                                        @foreach (var item in Model.weeks[i].Week4)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week5">
+                                            @foreach (var item in Model.weeks[i].Week5)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week5">
-                                        @foreach (var item in Model.weeks[i].Week5)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week6">
+                                            @foreach (var item in Model.weeks[i].Week6)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week6">
-                                        @foreach (var item in Model.weeks[i].Week6)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="monthLink" href="/Calendar?month=@Model.weeks[i+1].MonthInfo.Month&amp;year=2018">
+                                <table id="component-table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="7" style="background-color:transparent">
+                                                @Model.weeks[i + 1].MonthInfo.ToString("MMM")
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="week" id="week1">
+                                            @foreach (var item in Model.weeks[i + 1].Week1)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                    </td>
-                    <td>
-                        <a class="monthLink" href="/Calendar?month=@Model.weeks[i+1].MonthInfo.Month&amp;year=2018">
-                            <table id="component-table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="7" style="background-color:transparent">
-                                            @Model.weeks[i + 1].MonthInfo.ToString("MMM")
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="week" id="week1">
-                                        @foreach (var item in Model.weeks[i + 1].Week1)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week2">
+                                            @foreach (var item in Model.weeks[i + 1].Week2)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week2">
-                                        @foreach (var item in Model.weeks[i + 1].Week2)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week3">
+                                            @foreach (var item in Model.weeks[i + 1].Week3)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week3">
-                                        @foreach (var item in Model.weeks[i + 1].Week3)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week4">
+                                            @foreach (var item in Model.weeks[i + 1].Week4)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week4">
-                                        @foreach (var item in Model.weeks[i + 1].Week4)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week5">
+                                            @foreach (var item in Model.weeks[i + 1].Week5)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week5">
-                                        @foreach (var item in Model.weeks[i + 1].Week5)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week6">
+                                            @foreach (var item in Model.weeks[i + 1].Week6)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week6">
-                                        @foreach (var item in Model.weeks[i + 1].Week6)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
-                                            {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                    </td>
-                    <td>
-                        <a class="monthLink" href="/Calendar?month=@Model.weeks[i+2].MonthInfo.Month&amp;year=2018">
-                            <table id="component-table">
-                                <thead>
-                                    <tr>
-                                        <th colspan="7" style="background-color:transparent">
-                                            @Model.weeks[i + 2].MonthInfo.ToString("MMM")
-                                        </th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </td>
+                        <td>
+                            <a class="monthLink" href="/Calendar?month=@Model.weeks[i+2].MonthInfo.Month&amp;year=2018">
+                                <table id="component-table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="7" style="background-color:transparent">
+                                                @Model.weeks[i + 2].MonthInfo.ToString("MMM")
+                                            </th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="week" id="week1">
-                                        @foreach (var item in Model.weeks[i + 2].Week1)
-                                        {
-                                            if (item != null)
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="week" id="week1">
+                                            @foreach (var item in Model.weeks[i + 2].Week1)
                                             {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week2">
+                                            @foreach (var item in Model.weeks[i + 2].Week2)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week2">
-                                        @foreach (var item in Model.weeks[i + 2].Week2)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week3">
+                                            @foreach (var item in Model.weeks[i + 2].Week3)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week3">
-                                        @foreach (var item in Model.weeks[i + 2].Week3)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week4">
+                                            @foreach (var item in Model.weeks[i + 2].Week4)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week4">
-                                        @foreach (var item in Model.weeks[i + 2].Week4)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week5">
+                                            @foreach (var item in Model.weeks[i + 2].Week5)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week5">
-                                        @foreach (var item in Model.weeks[i + 2].Week5)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
+                                        </tr>
+                                        <tr class="week" id="week6">
+                                            @foreach (var item in Model.weeks[i + 2].Week6)
                                             {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                    <tr class="week" id="week6">
-                                        @foreach (var item in Model.weeks[i + 2].Week6)
-                                        {
-                                            if (item != null)
-                                            {
-                                                if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                if (item != null)
                                                 {
-                                                    <td class="weekend">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
-                                                }
-                                                else if (item.Date != DateTime.Today)
-                                                {
-                                                    <td>
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    if (item.daycolumn == 0 || item.daycolumn == 6)
+                                                    {
+                                                        <td class="weekend">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else if (item.Date != DateTime.Today)
+                                                    {
+                                                        <td>
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="selected">
+                                                            <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
+                                                            @if (item.BusyLevel != "#FFFFFF")
+                                                            {
+                                                                <div class="dayNum" style="color:white">@item.Date.Day</div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div class="dayNum">@item.Date.Day</div>
+                                                            }
+                                                        </td>
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    <td class="selected">
-                                                        <div class="busyCover" id="yearCover" style="background-color:@item.BusyLevel"></div>
-                                                        @if (item.BusyLevel != "#FFFFFF")
-                                                        {
-                                                            <div class="dayNum" style="color:white">@item.Date.Day</div>
-                                                        }
-                                                        else
-                                                        {
-                                                            <div class="dayNum">@item.Date.Day</div>
-                                                        }
-                                                    </td>
+                                                    <td style="background-color:transparent"></td>
                                                 }
                                             }
-                                            else
-                                            {
-                                                <td style="background-color:transparent"></td>
-                                            }
-                                        }
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </a>
-                    </td>
-                </tr>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </td>
+                    </tr>
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

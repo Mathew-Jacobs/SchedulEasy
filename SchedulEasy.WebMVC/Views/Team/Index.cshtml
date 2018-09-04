@@ -3,30 +3,62 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container body-content" style="background-color :white; padding: 1em;">
+    <h2>My Groups</h2>
 
-<h2>My Groups</h2>
+    <div style="display:flex">
+        @using (Html.BeginForm())
+        {
+            <p>
+                <input class="searchBox" id="searchString" name="searchString" type="text" value="" placeholder="Search" style="padding-left: 3px;">
+                <button type="submit" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </p>
+        }
 
-<div style="display:flex">
-    @using (Html.BeginForm())
-    {
         <p>
-            Search: <input class="searchBox" id="searchString" name="searchString" type="text" value="">
-            <input type="submit" value="Search" />
+            <a class="createButton" href="/Team/Create">
+                <span class="glyphicon glyphicon-plus"></span>
+            </a>
         </p>
+    </div>
+
+    @if (Model.PendingTeams.Count() > 0)
+    {
+        <h3>Pending</h3>
+        <div class="teamWrapper pending">
+            @foreach (var item in Model.PendingTeams)
+            {
+                <div class="team">
+                    <div class="titleRow">
+                        <div class="title">
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </div>
+                        <div class="owner">
+                            @Html.DisplayFor(modelItem => item.OwnerName)
+                        </div>
+                    </div>
+                    <div class="descriptionBox">
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </p>
+                    </div>
+                    <a href="/TeamData/Edit/@User.Identity.Name?teamID=@item.TeamID" style="float: right; bottom: -30px; position: relative;">
+                        Join Group <span class="glyphicon glyphicon-ok"></span>
+                    </a>
+                    <div class="detailBox">
+                        <div class="detailContent">
+                            @Html.ActionLink("Details", "Details", new { id = item.TeamID })
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <h3>Joined</h3>
     }
-
-    <p>
-        <a class="createButton" href="/Team/Create">
-            <span class="glyphicon glyphicon-plus"></span>
-        </a>
-    </p>
-</div>
-
-@if (Model.PendingTeams.Count() > 0)
-{
-    <h3>Pending</h3>
-    <div class="teamWrapper pending">
-        @foreach (var item in Model.PendingTeams)
+    <div class="teamWrapper">
+        @foreach (var item in Model.JoinedTeams)
         {
             <div class="team">
                 <div class="titleRow">
@@ -41,61 +73,32 @@
                     <p>
                         @Html.DisplayFor(modelItem => item.Description)
                     </p>
+                    @if (item.OwnerName == User.Identity.Name)
+                    {
+                        <div style="margin-top:5px">
+                            <a href="/Team/Edit/@item.TeamID" style="color:black; text-decoration:none; margin: 4px;">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                            <a href="/Team/Delete/@item.TeamID" style="color:rgb(161,5,0); text-decoration:none; margin: 4px;">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </a>
+                        </div>
+                    }
                 </div>
-                <a href="/TeamData/Edit/@User.Identity.Name?teamID=@item.TeamID" style="float: right; bottom: -30px; position: relative;">
-                    Join Group <span class="glyphicon glyphicon-ok"></span>
-                </a>
+                @Html.ActionLink("V", "Index", "TeamCalendar", new { teamID = item.TeamID }, new { @class = "ToCalendar" })
                 <div class="detailBox">
                     <div class="detailContent">
+                        @if (item.OwnerName == User.Identity.Name)
+                        {
+                            <div>
+                                @Html.ActionLink("Add Member", "Create", "TeamData", new { id = item.TeamID }, null)
+                            </div>
+                        }
                         @Html.ActionLink("Details", "Details", new { id = item.TeamID })
                     </div>
                 </div>
             </div>
         }
-    </div>
-    <h3>Joined</h3>
-}
-<div class="teamWrapper">
-    @foreach (var item in Model.JoinedTeams)
-    {
-        <div class="team">
-            <div class="titleRow">
-                <div class="title">
-                    @Html.DisplayFor(modelItem => item.Title)
-                </div>
-                <div class="owner">
-                    @Html.DisplayFor(modelItem => item.OwnerName)
-                </div>
-            </div>
-            <div class="descriptionBox">
-                <p>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </p>
-                @if (item.OwnerName == User.Identity.Name)
-                {
-                    <div style="margin-top:5px">
-                        <a href="/Team/Edit/@item.TeamID" style="color:black; text-decoration:none; margin: 4px;">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
-                        <a href="/Team/Delete/@item.TeamID" style="color:rgb(161,5,0); text-decoration:none; margin: 4px;">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </a>
-                    </div>
-                }
-            </div>
-            @Html.ActionLink("V", "Index", "TeamCalendar", new { teamID = item.TeamID }, new { @class = "ToCalendar" })
-            <div class="detailBox">
-                <div class="detailContent">
-                    @if (item.OwnerName == User.Identity.Name)
-                    {
-                        <div>
-                            @Html.ActionLink("Add Member", "Create", "TeamData", new { id = item.TeamID }, null)
-                        </div>
-                    }
-                    @Html.ActionLink("Details", "Details", new { id = item.TeamID })
-                </div>
-            </div>
-        </div>
-    }
 
+    </div>
 </div>

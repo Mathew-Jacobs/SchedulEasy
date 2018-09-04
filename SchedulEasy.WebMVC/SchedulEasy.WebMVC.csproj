@@ -222,9 +222,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Assets\Background.svg" />
     <Content Include="Content\Assets\CalendarIcon.svg" />
     <Content Include="Content\Assets\CalendarIconWhite.svg" />
     <Content Include="Content\Assets\honeycomb.svg" />
+    <Content Include="Content\Assets\Logo.svg" />
+    <Content Include="Content\Assets\NotificationBackground.svg" />
     <Content Include="Content\Assets\PlusIcon_Plus.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

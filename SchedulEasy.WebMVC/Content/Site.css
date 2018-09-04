@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: black;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -25,12 +26,15 @@ textarea {
 
 .loginBox {
     margin: 30px auto;
+    width: 40%;
+    min-width: 400px;
+    text-align: center;
     float: none;
 }
 
 .loginBox #loginForm {
     margin: 0 auto;
-    background-color: lightgray;
+    background-color: white;
     padding: 15px;
     border-radius: 10px;
 }
@@ -42,6 +46,7 @@ textarea {
 .mainCal {
     width: 80%;
     margin: 0 auto;
+    background-color: white;
 }
 
 .mainCal .year {
@@ -52,6 +57,8 @@ textarea {
 
 #calendarTable {
     width: 90%;
+    background-color: white;
+    padding-top: 1em;
     margin: 0 auto;
 }
 
@@ -313,6 +320,7 @@ textarea {
     right: 0;
     background-color: rgba(0,0,0,0.2);
     font-size: 1vw;
+    padding-top: 13%;
     text-align: center;
     margin-top: 15%;
     margin-bottom: 15%;
@@ -327,4 +335,19 @@ textarea {
 .monthLink:hover {
     text-decoration: none;
     color: black;
+}
+
+.registerBox {
+    position: absolute;
+    top: 150px;
+    left: 0;
+    margin: 0 0 0 55%;
+    background-color: white;
+    border-radius: 10px;
+    padding: 2em;
+    text-align: center;
+}
+
+.SchedulEasy {
+    background: url(../Content/Assets/Logo.svg) no-repeat top left;
 }

@@ -7,7 +7,7 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <div class="dropdown">
+            <div class="dropdown" style="margin-top: 5px;">
                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="margin:8px 16px 0 0;">
                     <span class="glyphicon glyphicon-user"></span>    @User.Identity.Name
@@ -25,7 +25,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", style = "margin-top: 5px;" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", style = "margin-top: 5px;" })</li>
     </ul>
 }

@@ -287,9 +287,9 @@ namespace SchedulEasy.Services
             int greenMid = 255;
             int blueMid = 100;
 
-            int redEnd = 178;
-            int greenEnd = 57;
-            int blueEnd = 59;
+            int redEnd = 173;
+            int greenEnd = 3;
+            int blueEnd = 3;
 
             int redStep1 = Convert.ToInt32(Math.Ceiling((redMid - redStart) / (stepNumber + 1m)));
             int greenStep1 = Convert.ToInt32(Math.Ceiling((greenMid - greenStart) / (stepNumber + 1m)));
